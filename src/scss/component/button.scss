@@ -1,0 +1,9 @@
+
+.button {
+	cursor: pointer;
+
+	&:hover {
+		background-color: $col-body-ter;
+		border-color: solid $col-ter;
+	}
+}

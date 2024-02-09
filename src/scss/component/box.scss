@@ -1,0 +1,18 @@
+
+.box {
+	background-color: $col-body-sec;
+	border: thin solid $col-sec;
+	border-radius: $border-radius-md;
+	&--sm {
+		width: $x-sm;
+		height: $y-sm;
+	}
+	&--md {
+		width: $x-md;
+		height: $y-md;
+	}
+	&--lg {
+		width: $x-lg;
+		height: $y-lg;
+	}
+}

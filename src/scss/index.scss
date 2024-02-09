@@ -1,3 +1,10 @@
 
+@import 'config/colors.scss';
+@import 'config/dimensions.scss';
+@import 'config/others.scss';
+
 @import 'base/reset.scss';
 @import 'base/layout.scss';
+
+@import 'component/box.scss';
+@import 'component/button.scss';
