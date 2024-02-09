@@ -3,6 +3,7 @@
 	background-color: $col-body-sec;
 	border: thin solid $col-sec;
 	border-radius: $border-radius-md;
+	padding: $sp-y-md $sp-x-md;
 	&--sm {
 		width: $x-sm;
 		height: $y-sm;

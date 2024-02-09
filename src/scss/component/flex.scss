@@ -1,0 +1,24 @@
+
+.flex {
+	display: flex;
+	&--row {
+		flex-direction: row;
+		gap: $sp-x-md;
+	}
+	&--column {
+		flex-direction: column;
+		gap: $sp-y-md;
+	}
+	&--center {
+		align-items: center;
+		justify-content: center;
+	}
+
+	&--stretch {
+		align-items: stretch;
+		> * {
+			flex-grow: 1;
+		}
+	}
+
+}

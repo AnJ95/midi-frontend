@@ -13,6 +13,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html, body, #root, #root > * {
+	height: 100%;
+}
+
 body {
 	padding: $sp-y-lg $sp-x-lg;
+	overflow: hidden;
 }
