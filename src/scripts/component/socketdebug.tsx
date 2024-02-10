@@ -16,7 +16,7 @@ const READY_STATES = {
 export default function SocketDebug(props) {
 
 	const [messageHistory, setMessageHistory] = useState([]);
-	const { sendMessage, lastMessage, isOpen, readyState } = useMidiSocket("*");
+	const [sendMessage, lastMessage, isOpen, readyState] = useMidiSocket("*");
 
 	useEffect(() => {
         if (lastMessage !== null) {

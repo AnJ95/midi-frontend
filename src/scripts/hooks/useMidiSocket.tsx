@@ -21,5 +21,5 @@ export default function useMidiSocket(type) {
 
 	const isOpen = readyState === ReadyState.OPEN;
 
-	return { sendMessage, lastMessage, isOpen, readyState };
+	return [ sendMessage, lastMessage, isOpen, readyState ];
 }

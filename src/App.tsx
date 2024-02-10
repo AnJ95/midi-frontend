@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import Box from './scripts/component/box.tsx'
 import Button from './scripts/component/button.tsx'
+import PresetButtons from './scripts/component/presetbuttons.tsx'
 import SocketDebug from './scripts/component/socketdebug.tsx'
 import { FlexRow, FlexCol } from './scripts/component/flex.tsx'
 
@@ -13,27 +14,7 @@ function App() {
 		<>
 		  	<FlexCol stretch gap="lg">
 		  		<SocketDebug />
-		  		<FlexCol stretch>
-					<FlexRow stretch>
-						<Button></Button>
-						<Button></Button>
-						<Button></Button>
-						<Button></Button>
-						<Button></Button>
-						<Button></Button>
-						<Button></Button>
-						<Button></Button>
-						<Button></Button>
-					</FlexRow>
-					<FlexRow stretch>
-						<Button></Button>
-						<Button></Button>
-						<Button></Button>
-						<Button></Button>
-						<Button></Button>
-						<Button></Button>
-					</FlexRow>
-				</FlexCol>
+		  		<PresetButtons />
 				<FlexRow stretch>
 					<Box>
 						<FlexCol stretch style={{ height: "100%" }}>
