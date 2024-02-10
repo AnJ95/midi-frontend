@@ -6,48 +6,41 @@
 ```json
 {
   "id": "bar",
-  "orderId": 0,
   "text": "Bar Presets"
 }
 ```
-`orderId` alternativ durch Reihenfolge implizit?
 
 ### PresetButtonDefinition
 ```json
 {
   "id": "party-modus-1",
-  "orderId": 0,
   "category": "bar", 
   "icon": "party",
   "color": "#ff00ff",
   "text": "Party 1" 
 }
 ```
-`orderId` alternativ durch Reihenfolge implizit?
 
 ### HoldActionDefinition
 ```json
 {
   "id": "strobo-1",
-  "orderId": 0,
   "icon": "strobo",
   "color": "#ff00ff",
   "text": "Strobo"
 }
 ```
-`orderId` alternativ durch Reihenfolge implizit?
 
 ### FaderDefinition
 ```json
 {
   "id": "hexagons",
-  "orderId": 0,
   "icon": "hexagon",
   "color": "#ff00ff",
   "text": "Hexagons"
 }
 ```
-`orderId` alternativ durch Reihenfolge implizit?
+
 ### FaderState
 ```json
 {
