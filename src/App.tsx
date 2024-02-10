@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import Box from './component/box.tsx'
-import Button from './component/button.tsx'
-import { FlexRow, FlexCol } from './component/flex.tsx'
+import Box from './scripts/component/box.tsx'
+import Button from './scripts/component/button.tsx'
+import SocketDebug from './scripts/component/socketdebug.tsx'
+import { FlexRow, FlexCol } from './scripts/component/flex.tsx'
 
 function App() {
 	const [count, setCount] = useState(0);
@@ -11,6 +12,7 @@ function App() {
 	return (
 		<>
 		  	<FlexCol stretch gap="lg">
+		  		<SocketDebug />
 		  		<FlexCol stretch>
 					<FlexRow stretch>
 						<Button></Button>

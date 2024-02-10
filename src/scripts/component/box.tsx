@@ -5,7 +5,7 @@ export default function Box(props) {
 		+ (props.size ? (" box--" + props.size) : "");
 
 	return (
-		<div className={className}>
+		<div className={className} style={props.style}>
 			{props.children}
 		</div>
 	)
