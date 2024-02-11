@@ -37,7 +37,7 @@ export default function SocketDebug(props) {
 					<p>WebSocket ReadyState: {READY_STATES[readyState]}</p>
 					<button onClick={handleClickSendMessage} disabled={!isOpen}>TestMsg</button>
 				</div>
-				<textarea readOnly style={{ height: "100px" }} value={messageHistoryStr} />
+				<textarea readOnly style={{ height: "100px", whiteSpace: "pre" }} value={messageHistoryStr} />
 			</FlexRow>
         </Box>
       );

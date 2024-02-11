@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
-import useMidiSocket from './../hooks/useMidiSocket'
+import useMidiSocket, { useMidiRequester } from './../hooks/useMidiSocket'
 
 import PresetCategoryDefinitions from './../data/PresetCategoryDefinitions.json'
 import PresetButtonDefinitions from './../data/PresetButtonDefinitions.json'
@@ -12,30 +12,26 @@ export default function PresetButtons(props) {
 	const [presetCategoryDefinitions, setPresetCategoryDefinitions] = useState([]);
 	const [presetButtonDefinitions, setPresetButtonDefinitions] = useState([]);
 
-	const [ sendPresetCategoryDefinitions, lastPresetCategoryDefinitions ] = useMidiSocket("sendPresetCategoryDefinitions");
-	const [ sendPresetButtonDefinitions, lastPresetButtonDefinitions ] = useMidiSocket("sendPresetButtonDefinitions");
+	const [requestPresetCategoryDefinitions, sendDebugPresetCategoryDefinitions] = useMidiRequester(
+		"requestPresetCategoryDefinitions", // request type
+		"sendPresetCategoryDefinitions", // type to expect data from
+		presetCategoryDefinitions, // current state
+		setPresetCategoryDefinitions // state setter
+	);
+	const [requestPresetButtonDefinitions, sendDebugPresetButtonDefinitions] = useMidiRequester(
+		"requestPresetButtonDefinitions", // request type
+		"sendPresetButtonDefinitions", // type to expect data from
+		presetButtonDefinitions, // current state
+		setPresetButtonDefinitions // state setter
+	);
 
 	useEffect(() => {
-        if (lastPresetCategoryDefinitions) {
-			setPresetCategoryDefinitions(lastPresetCategoryDefinitions.items);
-        }
-	}, [lastPresetCategoryDefinitions, setPresetCategoryDefinitions]);
-	useEffect(() => {
-		if (lastPresetButtonDefinitions) {
-			setPresetButtonDefinitions(lastPresetButtonDefinitions.items);
-		}
-	}, [lastPresetButtonDefinitions, setPresetButtonDefinitions]);
+		requestPresetCategoryDefinitions()
+		requestPresetButtonDefinitions()
 
-	// DEBUG
-	useEffect(() => {
-		sendPresetCategoryDefinitions({
-			type: "sendPresetCategoryDefinitions",
-			items: PresetCategoryDefinitions
-		})
-		sendPresetButtonDefinitions({
-			type: "sendPresetButtonDefinitions",
-			items: PresetButtonDefinitions
-		})
+		// DEBUG
+		sendDebugPresetCategoryDefinitions({ items: PresetCategoryDefinitions })
+		sendDebugPresetButtonDefinitions({ items: PresetButtonDefinitions })
 	}, []);
 
 	return (
