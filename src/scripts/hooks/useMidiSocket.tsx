@@ -12,25 +12,41 @@ const SOCKET_OPTIONS = {
 	share: true
 }
 
-export default function useMidiSocket(type) {
-	const matchesType = (json) => type === '*' || type === json.type;
+function getFilteredSocketOptions(typeFilter) {
+	let socketOptions = { ...SOCKET_OPTIONS }
+	if (typeFilter !== '*') {
+		socketOptions.filter = (message) => {
+			try {
+				// TODO that's a lot of parsing - any other way to filter?
+				const json = JSON.parse(message.data)
+				return json.type === typeFilter
+			} catch (e) {
+				return false
+			}
+		}
+	}
+	return socketOptions;
+}
 
-	const { sendJsonMessage, lastJsonMessage, readyState } = useWebSocket(SOCKET_URL, SOCKET_OPTIONS);
+export default function useMidiSocket(type) {
+
+	let socketOptions = getFilteredSocketOptions(type)
+	const { sendJsonMessage, lastJsonMessage, readyState } = useWebSocket(SOCKET_URL, socketOptions);
 
 	const sendMessage = (json) => {
 		json.type = json.type || channelType
 		sendJsonMessage(json)
 	}
-	const lastMessage = (lastJsonMessage && matchesType(lastJsonMessage)) ? lastJsonMessage : null;
 
 	const isOpen = readyState === ReadyState.OPEN;
 
-	return [ sendMessage, lastMessage, isOpen, readyState ];
+	return [ sendMessage, lastJsonMessage, isOpen, readyState ];
 }
 
 export function useMidiRequester(requestType, sendType, currentState, stateSetter, extractStateFromJson) {
 
-	const { sendJsonMessage, lastJsonMessage, readyState } = useWebSocket(SOCKET_URL, SOCKET_OPTIONS);
+	let socketOptions = getFilteredSocketOptions(sendType)
+	const { sendJsonMessage, lastJsonMessage, readyState } = useWebSocket(SOCKET_URL, socketOptions);
 
 	const startRequest = () => {
 		sendJsonMessage({ type: requestType })
@@ -41,7 +57,7 @@ export function useMidiRequester(requestType, sendType, currentState, stateSette
 		sendJsonMessage(data)
 	}
 
-	if (lastJsonMessage && lastJsonMessage.type === sendType) {
+	if (lastJsonMessage) {
 		const newState = extractStateFromJson ? extractStateFromJson(lastJsonMessage) : lastJsonMessage.items
 		if (currentState !== newState) {
 			stateSetter(newState)

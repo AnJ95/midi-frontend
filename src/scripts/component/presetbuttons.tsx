@@ -24,7 +24,7 @@ export default function PresetButtons(props) {
 		presetButtonDefinitions, // current state
 		setPresetButtonDefinitions // state setter
 	);
-
+	console.log("render PresetButtons")
 	useEffect(() => {
 		requestPresetCategoryDefinitions()
 		requestPresetButtonDefinitions()
