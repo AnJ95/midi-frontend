@@ -1,7 +1,7 @@
 import useWebSocket, { ReadyState } from 'react-use-websocket';
 import { useState } from 'react';
 
-const SOCKET_URL = 'wss://echo.websocket.org'
+import { SOCKET_URL } from './../data/Config';
 
 const SOCKET_OPTIONS = {
 	// reconnect automatically
