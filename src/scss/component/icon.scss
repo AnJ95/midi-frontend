@@ -1,0 +1,32 @@
+@use "sass:math";
+
+$icon-path: "../../../icons.svg";
+$icon-map-width: 5;
+$icon-map-height: 5;
+$icon-map: [
+	"off", "sun", "", "", "",
+	"chill", "party", "rave", "rainbow", "",
+	"", "", "", "", "",
+	"", "", "", "", "",
+	"", "", "", "", "",
+];
+
+.i {
+	display: block;
+	aspect-ratio: 1 / 1;
+
+	background-image: url($icon-path);
+	background-size: ($icon-map-height * 100%) ($icon-map-width * 100%);
+
+	@for $y from 1 through $icon-map-height {
+		@for $x from 1 through $icon-map-width {
+			&--#{nth($icon-map, ($y - 1) * $icon-map-width + $x)} {
+				background-position: (math.div(100%,($icon-map-width - 1))*($x - 1)) (math.div(100%, ($icon-map-height - 1))*($y - 1));
+			}
+		}
+	}
+}
+
+.button > .i {
+	height: 100%;
+}

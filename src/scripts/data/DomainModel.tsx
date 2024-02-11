@@ -1,4 +1,4 @@
-type Icon = "sun" | "off" | "chill" | "party" | "rave" | "rainbow";
+export type Icon = "sun" | "off" | "chill" | "party" | "rave" | "rainbow";
 
 export type Json = any;
 export type Color = string;

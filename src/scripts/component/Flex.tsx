@@ -7,7 +7,7 @@ interface iFlexProps extends iFlexElemProps {
 }
 
 interface iFlexElemProps extends iProps {
-    stretch: boolean,
+    stretch?: boolean,
     gap?: string
 }
 

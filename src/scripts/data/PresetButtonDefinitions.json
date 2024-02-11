@@ -1,79 +1,93 @@
-[{
-  "id": "bar-clean",
-  "category": "bar",
-  "icon": "sun",
-  "color": "#ff00ff",
-  "text": "Putzlicht"
-},{
-  "id": "bar-off",
-  "category": "bar",
-  "icon": "off",
-  "color": "#ff00ff",
-  "text": "Aus"
-},{
-  "id": "bar-chill-1",
-  "category": "bar",
-  "icon": "chill",
-  "color": "#ff00ff",
-  "text": "Chill 1"
-},{
-  "id": "bar-chill-2",
-  "category": "bar",
-  "icon": "party",
-  "color": "#ff00ff",
-  "text": "Chill 2"
-},{
-  "id": "bar-party-1",
-  "category": "bar",
-  "icon": "party",
-  "color": "#ff00ff",
-  "text": "Party 1"
-},{
-  "id": "bar-party-2",
-  "category": "bar",
-  "icon": "party",
-  "color": "#ff00ff",
-  "text": "Party 2"
-},{
-  "id": "bar-rave-1",
-  "category": "bar",
-  "icon": "rave",
-  "color": "#ff00ff",
-  "text": "Rave 1"
-},{
-  "id": "bar-rave-2",
-  "category": "bar",
-  "icon": "rave",
-  "color": "#ff00ff",
-  "text": "Rave 2"
-},{
-  "id": "thresen-clean",
-  "category": "theke",
-  "icon": "sun",
-  "color": "#ff00ff",
-  "text": "Putzlicht"
-},{
-  "id": "thresen-off",
-  "category": "theke",
-  "icon": "off",
-  "color": "#ff00ff",
-  "text": "Aus"
-},{
-  "id": "thresen-dark",
-  "category": "theke",
-  "icon": "rave",
-  "color": "#ff00ff",
-  "text": "Dunkel"
-},{
-  "id": "thresen-cozy",
-  "category": "theke",
-  "icon": "chill",
-  "color": "#ff00ff",
-  "text": "Gemütlich"
-},{
-  "id": "thresen-rainbow",
-  "category": "theke",
-  "icon": "rainbow",
-  "color": "#ff00ff",
-  "text": "Regenbogen"
-}]
+[
+  {
+    "id": "bar-clean",
+    "category": "bar",
+    "icon": "sun",
+    "color": "#ff00ff",
+    "text": "Putzlicht"
+  },
+  {
+    "id": "bar-off",
+    "category": "bar",
+    "icon": "off",
+    "color": "#ff00ff",
+    "text": "Aus"
+  },
+  {
+    "id": "bar-chill-1",
+    "category": "bar",
+    "icon": "chill",
+    "color": "#ff00ff",
+    "text": "Chill 1"
+  },
+  {
+    "id": "bar-chill-2",
+    "category": "bar",
+    "icon": "party",
+    "color": "#ff00ff",
+    "text": "Chill 2"
+  },
+  {
+    "id": "bar-party-1",
+    "category": "bar",
+    "icon": "party",
+    "color": "#ff00ff",
+    "text": "Party 1"
+  },
+  {
+    "id": "bar-party-2",
+    "category": "bar",
+    "icon": "party",
+    "color": "#ff00ff",
+    "text": "Party 2"
+  },
+  {
+    "id": "bar-rave-1",
+    "category": "bar",
+    "icon": "rave",
+    "color": "#ff00ff",
+    "text": "Rave 1"
+  },
+  {
+    "id": "bar-rave-2",
+    "category": "bar",
+    "icon": "rave",
+    "color": "#ff00ff",
+    "text": "Rave 2"
+  },
+  {
+    "id": "thresen-clean",
+    "category": "theke",
+    "icon": "sun",
+    "color": "#ff00ff",
+    "text": "Putzlicht"
+  },
+  {
+    "id": "thresen-off",
+    "category": "theke",
+    "icon": "off",
+    "color": "#ff00ff",
+    "text": "Aus"
+  },
+  {
+    "id": "thresen-dark",
+    "category": "theke",
+    "icon": "rave",
+    "color": "#ff00ff",
+    "text": "Dunkel"
+  },
+  {
+    "id": "thresen-cozy",
+    "category": "theke",
+    "icon": "chill",
+    "color": "#ff00ff",
+    "text": "Gemütlich"
+  },
+  {
+    "id": "thresen-rainbow",
+    "category": "theke",
+    "icon": "rainbow",
+    "color": "#ff00ff",
+    "text": "Regenbogen"
+  }
+]
