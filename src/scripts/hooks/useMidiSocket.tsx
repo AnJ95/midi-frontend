@@ -1,4 +1,5 @@
 import useWebSocket, { ReadyState } from 'react-use-websocket';
+import { useState } from 'react';
 
 const SOCKET_URL = 'wss://echo.websocket.org'
 
@@ -43,10 +44,12 @@ export default function useMidiSocket(type) {
 	return [ sendMessage, lastJsonMessage, isOpen, readyState ];
 }
 
-export function useMidiRequester(requestType, sendType, currentState, stateSetter, extractStateFromJson) {
+export function useMidiRequester(requestType, sendType, initialState, extractStateFromJson) {
 
 	let socketOptions = getFilteredSocketOptions(sendType)
 	const { sendJsonMessage, lastJsonMessage, readyState } = useWebSocket(SOCKET_URL, socketOptions);
+
+	const [ state, setState ] = useState(initialState)
 
 	const startRequest = () => {
 		sendJsonMessage({ type: requestType })
@@ -59,10 +62,10 @@ export function useMidiRequester(requestType, sendType, currentState, stateSette
 
 	if (lastJsonMessage) {
 		const newState = extractStateFromJson ? extractStateFromJson(lastJsonMessage) : lastJsonMessage.items
-		if (currentState !== newState) {
-			stateSetter(newState)
+		if (state !== newState) {
+			setState(newState)
 		}
 	}
 
-	return [ startRequest, sendDebugData ];
+	return [ startRequest, sendDebugData, state ];
 }

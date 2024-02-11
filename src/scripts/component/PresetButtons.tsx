@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 import useMidiSocket, { useMidiRequester } from './../hooks/useMidiSocket'
 
 import PresetCategoryDefinitions from './../data/PresetCategoryDefinitions.json'
@@ -9,22 +9,17 @@ import { FlexRow, FlexCol } from './Flex'
 
 export default function PresetButtons(props) {
 
-	const [presetCategoryDefinitions, setPresetCategoryDefinitions] = useState([]);
-	const [presetButtonDefinitions, setPresetButtonDefinitions] = useState([]);
-
-	const [requestPresetCategoryDefinitions, sendDebugPresetCategoryDefinitions] = useMidiRequester(
+	const [requestPresetCategoryDefinitions, sendDebugPresetCategoryDefinitions, presetCategoryDefinitions] = useMidiRequester(
 		"requestPresetCategoryDefinitions", // request type
 		"sendPresetCategoryDefinitions", // type to expect data from
-		presetCategoryDefinitions, // current state
-		setPresetCategoryDefinitions // state setter
+		[] // initial state
 	);
-	const [requestPresetButtonDefinitions, sendDebugPresetButtonDefinitions] = useMidiRequester(
+	const [requestPresetButtonDefinitions, sendDebugPresetButtonDefinitions, presetButtonDefinitions] = useMidiRequester(
 		"requestPresetButtonDefinitions", // request type
 		"sendPresetButtonDefinitions", // type to expect data from
-		presetButtonDefinitions, // current state
-		setPresetButtonDefinitions // state setter
+		[] // initial state
 	);
-	console.log("render PresetButtons")
+
 	useEffect(() => {
 		requestPresetCategoryDefinitions()
 		requestPresetButtonDefinitions()
