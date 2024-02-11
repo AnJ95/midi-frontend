@@ -54,7 +54,8 @@ export default function SocketDebug() {
             <FlexRow stretch style={{height: "100%"}}>
                 <div>
                     <p>WebSocket ReadyState: {READY_STATES[readyState]}</p>
-                    <input ref={inputElement} defaultValue={'{"type": "debug", "text": "hallo"}'}/>
+                    <input ref={inputElement}
+                           defaultValue={'{"type":"sendFaderState", "item":{"id":"hexagons", "state":0.5}}'}/>
                     &nbsp;
                     <button onClick={onClickSendMessage} disabled={!isOpen}>Send</button>
                 </div>

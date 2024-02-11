@@ -1,0 +1,50 @@
+[
+  {
+    "id": "hexagons",
+    "icon": "hexagon",
+    "color": "#ff00ff",
+    "text": "Hexagons"
+  },
+  {
+    "id": "sunstripes",
+    "icon": "sunstripe",
+    "color": "#ff00ff",
+    "text": "Sunstripes"
+  },
+  {
+    "id": "bulb",
+    "icon": "bulb",
+    "color": "#ff00ff",
+    "text": "Glühbirne"
+  },
+  {
+    "id": "moving-heads",
+    "icon": "moving-head",
+    "color": "#ff00ff",
+    "text": "Moving Heads"
+  },
+  {
+    "id": "hexagons-2",
+    "icon": "hexagon",
+    "color": "#ff00ff",
+    "text": "Hexagons"
+  },
+  {
+    "id": "sunstripes-2",
+    "icon": "sunstripe",
+    "color": "#ff00ff",
+    "text": "Sunstripes"
+  },
+  {
+    "id": "bulb-2",
+    "icon": "bulb",
+    "color": "#ff00ff",
+    "text": "Glühbirne"
+  },
+  {
+    "id": "moving-heads-2",
+    "icon": "moving-head",
+    "color": "#ff00ff",
+    "text": "Moving Heads"
+  }
+]

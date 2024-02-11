@@ -3,6 +3,7 @@
 ## Domain Model
 
 ### PresetCategoryDefinition
+
 ```json
 {
   "id": "bar",
@@ -11,17 +12,19 @@
 ```
 
 ### PresetButtonDefinition
+
 ```json
 {
   "id": "party-modus-1",
-  "category": "bar", 
+  "category": "bar",
   "icon": "party",
   "color": "#ff00ff",
-  "text": "Party 1" 
+  "text": "Party 1"
 }
 ```
 
 ### HoldActionDefinition
+
 ```json
 {
   "id": "strobo-1",
@@ -32,6 +35,7 @@
 ```
 
 ### FaderDefinition
+
 ```json
 {
   "id": "hexagons",
@@ -42,13 +46,13 @@
 ```
 
 ### FaderState
+
 ```json
 {
-  "orderId": 0,
+  "id": "hexagons",
   "state": 1.0
 }
 ```
-`orderId` oder lieber `id`?
 
 ## Socket Messages
 
@@ -63,7 +67,7 @@
   "type": "requestPresetCategoryDefinitions"
 }
 ```
-Alternativ on connect?
+
 </td><td>
 
 ```json
@@ -72,7 +76,9 @@ Alternativ on connect?
   "items": []
 }
 ```
-Item type: [PresetCategoryDefinition](https://github.com/AnJ95/midi-frontend/blob/main/COMMUNICATION.md#PresetCategoryDefinition)
+
+Item
+type: [PresetCategoryDefinition](https://github.com/AnJ95/midi-frontend/blob/main/COMMUNICATION.md#PresetCategoryDefinition)
 </td></tr><tr><td>
 
 ```json
@@ -80,7 +86,7 @@ Item type: [PresetCategoryDefinition](https://github.com/AnJ95/midi-frontend/blo
   "type": "requestPresetButtonDefinitions"
 }
 ```
-Alternativ on connect?
+
 </td><td>
 
 ```json
@@ -89,7 +95,9 @@ Alternativ on connect?
   "items": []
 }
 ```
-Item type: [PresetButtonDefinition](https://github.com/AnJ95/midi-frontend/blob/main/COMMUNICATION.md#PresetButtonDefinition)
+
+Item
+type: [PresetButtonDefinition](https://github.com/AnJ95/midi-frontend/blob/main/COMMUNICATION.md#PresetButtonDefinition)
 </td></tr><tr><td>
 
 ```json
@@ -99,6 +107,7 @@ Item type: [PresetButtonDefinition](https://github.com/AnJ95/midi-frontend/blob/
   "id": "party-modus-1"
 }
 ```
+
 </td><td>
 </td></tr></table>
 
@@ -113,7 +122,7 @@ Item type: [PresetButtonDefinition](https://github.com/AnJ95/midi-frontend/blob/
   "type": "requestHoldActionDefinitions"
 }
 ```
-Alternativ on connect?
+
 </td><td>
 
 ```json
@@ -122,7 +131,9 @@ Alternativ on connect?
   "items": []
 }
 ```
-Item type: [HoldActionDefinition](https://github.com/AnJ95/midi-frontend/blob/main/COMMUNICATION.md#HoldActionDefinition)
+
+Item
+type: [HoldActionDefinition](https://github.com/AnJ95/midi-frontend/blob/main/COMMUNICATION.md#HoldActionDefinition)
 </td></tr><tr><td>
 
 ```json
@@ -131,12 +142,14 @@ Item type: [HoldActionDefinition](https://github.com/AnJ95/midi-frontend/blob/ma
   "id": "strobo-1"
 }
 ```
+
 ```json
 {
   "type": "stopHoldAction",
   "id": "strobo-1"
 }
 ```
+
 </td><td>
 </td></tr></table>
 
@@ -151,7 +164,7 @@ Item type: [HoldActionDefinition](https://github.com/AnJ95/midi-frontend/blob/ma
   "type": "requestFaderDefinitions"
 }
 ```
-Alternativ on connect?
+
 </td><td>
 
 ```json
@@ -160,48 +173,45 @@ Alternativ on connect?
   "items": []
 }
 ```
+
 Item type: [FaderDefinition](https://github.com/AnJ95/midi-frontend/blob/main/COMMUNICATION.md#FaderDefinition)
 </td></tr><tr><td>
 
 ```json
 {
-  "type": "requestAllFaderStates"
+  "type": "requestFaderState",
+  "id": "hexagons"
 }
 ```
-Alternativ on connect?
+
 </td><td>
 
-```json
-{
-  "type": "sendFaderStates",
-  "items": []
-}
-```
 ```json
 {
   "type": "sendFaderState",
   "item": {}
 }
 ```
-Item type: [FaderState](https://github.com/AnJ95/midi-frontend/blob/main/COMMUNICATION.md#FaderState)  
-Initial `sendFaderStates`, danach `sendFaderState`
+
+Item type: [FaderState](https://github.com/AnJ95/midi-frontend/blob/main/COMMUNICATION.md#FaderState)
 </td></tr><tr><td>
 </td><td>
 
 ```json
 {
   "type": "startFaderHighlight",
-  "orderId": 0
+  "id": "hexagons"
 }
 ```
+
 ```json
 {
   "type": "stopFaderHighlight",
-  "orderId": 0
+  "id": "hexagons"
 }
 ```
-Oder lieber in FaderState packen?  
-`orderId` oder lieber `id`?
+
+Oder lieber in FaderState packen?
 </td></tr></table>
 
 ### Pagination
@@ -215,10 +225,12 @@ Oder lieber in FaderState packen?
   "type": "pageLeft"
 }
 ```
+
 ```json
 {
   "type": "pageRight"
 }
 ```
+
 </td><td>
 </td></tr></table>

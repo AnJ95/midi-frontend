@@ -3,6 +3,7 @@ import Button from './scripts/component/Button.tsx'
 import PresetManager from './scripts/component/PresetManager.tsx'
 import SocketDebug from './scripts/component/SocketDebug.tsx'
 import {FlexCol, FlexRow} from './scripts/component/Flex.tsx'
+import FaderManager from "./scripts/component/FaderManager.tsx";
 
 function App() {
     return (
@@ -52,18 +53,7 @@ function App() {
                         </FlexCol>
                     </Box>
                 </FlexRow>
-                <FlexRow stretch>
-                    <Button>&lt;</Button>
-                    <Button>Hexagons</Button>
-                    <Button>Sunstripes</Button>
-                    <Button>Glühbirne</Button>
-                    <Button>Moving Heads</Button>
-                    <Button>Hexagons</Button>
-                    <Button>Sunstripes</Button>
-                    <Button>Glühbirne</Button>
-                    <Button>Moving Heads</Button>
-                    <Button>&gt;</Button>
-                </FlexRow>
+                <FaderManager/>
             </FlexCol>
         </>
     )

@@ -16,14 +16,14 @@ const SOCKET_OPTIONS: Options = {
     share: true
 }
 
-function getFilteredSocketOptions(typeFilter: string) {
+function getFilteredSocketOptions(typeFilter: string, extraFilter?: (json: Json) => boolean) {
     let socketOptions = {...SOCKET_OPTIONS}
     if (typeFilter !== '*') {
         socketOptions.filter = (message) => {
             try {
                 // TODO that's a lot of parsing - any other way to filter?
                 const json = JSON.parse(message.data)
-                return json.type === typeFilter
+                return json.type === typeFilter && (!extraFilter || extraFilter(json))
             } catch (e) {
                 return false
             }
@@ -61,9 +61,9 @@ export function useMidiSender<T>(type: string): [(data: T) => void] {
     return [sendMessage];
 }
 
-export function useMidiRequester<T>(requestType: string, sendType: string, initialState: T, extractStateFromJson?: (json: Json) => T): [() => void, (data: Json) => void, T] {
+export function useMidiRequester<T>(requestType: string, sendType: string, initialState: T, extractStateFromJson?: (json: Json) => T, filterMessageJson?: (json: Json) => boolean): [() => void, (data: Json) => void, T] {
 
-    let socketOptions = getFilteredSocketOptions(sendType)
+    let socketOptions = getFilteredSocketOptions(sendType, filterMessageJson)
     const {sendJsonMessage, lastJsonMessage} = useWebSocket<Json>(SOCKET_URL, socketOptions);
 
     const [state, setState] = useState(initialState)

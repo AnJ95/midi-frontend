@@ -3,6 +3,7 @@
 	cursor: pointer;
 	@extend .flex;
 	@extend .flex--center;
+
 	&.button--pressed {
 		background-color: $col-body-ter;
 		border-color: solid $col-ter;
