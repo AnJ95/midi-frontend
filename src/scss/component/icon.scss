@@ -1,12 +1,12 @@
 @use "sass:math";
 
-$icon-path: "../../../icons.svg";
+$icon-path: "../../../midi-frontend/icons.svg";
 $icon-map-width: 5;
 $icon-map-height: 5;
 $icon-map: [
-	"off", "sun", "", "", "",
+	"", "off", "sun", "", "",
 	"chill", "party", "rave", "rainbow", "",
-	"", "", "", "", "",
+	"hexagon", "sunstripe", "moving-head", "bulb", "",
 	"", "", "", "", "",
 	"", "", "", "", "",
 ];
