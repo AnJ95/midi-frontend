@@ -2,8 +2,8 @@ import { useState, useCallback, useEffect } from 'react';
 import { ReadyState } from 'react-use-websocket';
 import useMidiSocket from './../hooks/useMidiSocket'
 
-import Box from './../component/box'
-import { FlexRow } from './../component/flex'
+import Box from './Box'
+import { FlexRow } from './Flex'
 
 const READY_STATES = {
     [ReadyState.CONNECTING]: 'Connecting',

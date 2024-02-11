@@ -4,8 +4,8 @@ import useMidiSocket, { useMidiRequester } from './../hooks/useMidiSocket'
 import PresetCategoryDefinitions from './../data/PresetCategoryDefinitions.json'
 import PresetButtonDefinitions from './../data/PresetButtonDefinitions.json'
 
-import PresetButton from './presetbutton'
-import { FlexRow, FlexCol } from './flex'
+import PresetButton from './PresetButton'
+import { FlexRow, FlexCol } from './Flex'
 
 export default function PresetButtons(props) {
 

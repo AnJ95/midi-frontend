@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import Box from './scripts/component/box.tsx'
-import Button from './scripts/component/button.tsx'
-import PresetButtons from './scripts/component/presetbuttons.tsx'
-import SocketDebug from './scripts/component/socketdebug.tsx'
-import { FlexRow, FlexCol } from './scripts/component/flex.tsx'
+import Box from './scripts/component/Box.tsx'
+import Button from './scripts/component/Button.tsx'
+import PresetButtons from './scripts/component/PresetButtons.tsx'
+import SocketDebug from './scripts/component/SocketDebug.tsx'
+import { FlexRow, FlexCol } from './scripts/component/Flex.tsx'
 
 function App() {
 	const [count, setCount] = useState(0);
