@@ -1,20 +1,26 @@
-import { useState, useCallback, useEffect } from 'react';
-import { useMidiSender } from './../hooks/useMidiSocket'
-
+import {useMidiSender} from './../hooks/useMidiSocket'
 import Button from './Button'
+import React from "react";
+import {PresetButtonDefinition} from "../data/DomainModel.tsx";
 
-export default function PresetButton(props) {
+interface iPresetButtonProps {
+    model: PresetButtonDefinition
+    currentPreset: string
+    setCurrentPreset: React.Dispatch<React.SetStateAction<string>>,
+}
 
-	const [sendMessage] = useMidiSender("setPreset");
+export default function PresetButton(props: iPresetButtonProps) {
 
-	const onClick = () => {
-		sendMessage({ category: props.model.category, id: props.model.id });
-		props.setCurrentPreset(props.model.id);
-	}
+    const [sendMessage] = useMidiSender("setPreset");
 
-	return (
-		<Button pressed={props.currentPreset == props.model.id} onClick={onClick}>
-			{props.model.text}
-		</Button>
-	)
+    const onClick = () => {
+        sendMessage({category: props.model.category, id: props.model.id});
+        props.setCurrentPreset(props.model.id);
+    }
+
+    return (
+        <Button pressed={props.currentPreset == props.model.id} onClick={onClick}>
+            {props.model.text}
+        </Button>
+    )
 }

@@ -1,4 +1,11 @@
-export default function Box(props) {
+import {iProps} from "./Component.tsx";
+
+export interface iBoxProps extends iProps {
+	onClick?: () => void,
+	size?: string;
+}
+
+export default function Box(props: iBoxProps) {
 
 	const className = "box"
 		+ (props.className ? (" " + props.className) : "")

@@ -1,6 +1,10 @@
-import Box from './Box'
+import Box, { iBoxProps } from './Box'
 
-export default function Button(props) {
+interface iButtonProps extends iBoxProps {
+	pressed?: boolean
+}
+
+export default function Button(props: iButtonProps) {
 
 	const className = "button"
 		+ (props.className ? (" " + props.className) : "")

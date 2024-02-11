@@ -1,25 +1,38 @@
+import {iProps} from "./Component.tsx";
 
-function Flex(props) {
-	const className = "flex"
-		+ (props.className ? (" " + props.className) : "")
-		+ (props.direction ? (" flex--" + props.direction) : "")
-		+ (props.stretch ? (" flex--stretch") : "");
+type direction = "row" | "column"
 
-	return (
-		<div style={props.style} className={className}>
-			{props.children}
-		</div>
-	)
+interface iFlexProps extends iFlexElemProps {
+    direction: direction,
 }
 
-export function FlexRow(props) {
-	return (
-		<Flex style={props.style} direction="row" {...props} />
-	)
+interface iFlexElemProps extends iProps {
+    stretch: boolean,
+    gap?: string
 }
 
-export function FlexCol(props) {
-	return (
-		<Flex style={props.style} direction="column" {...props} />
-	)
+function Flex(props: iFlexProps) {
+    const className = "flex"
+        + (props.className ? (" " + props.className) : "")
+        + (props.direction ? (" flex--" + props.direction) : "")
+        + (props.stretch ? (" flex--stretch") : "")
+        + (props.gap ? (" flex--gap--" + props.gap) : "");
+
+    return (
+        <div style={props.style} className={className}>
+            {props.children}
+        </div>
+    )
+}
+
+export function FlexRow(props: iFlexElemProps) {
+    return (
+        <Flex style={props.style} direction="row" {...props} />
+    )
+}
+
+export function FlexCol(props: iFlexElemProps) {
+    return (
+        <Flex style={props.style} direction="column" {...props} />
+    )
 }
