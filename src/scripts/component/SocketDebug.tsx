@@ -27,7 +27,15 @@ export default function SocketDebug(props) {
 	const handleClickSendMessage = useCallback(() => sendMessage({ type: "debug", text: "hallo" }), []);
 
 	const messageHistoryStr = messageHistory
-		.map((message, idx) => (message ? JSON.stringify(message) : ""))
+		.map((message, idx) => {
+			if (message) {
+				let messageCopy = { ...message };
+				delete messageCopy.type;
+
+				return (message.type || "UNTYPED") + ": " + JSON.stringify(messageCopy)
+			}
+			return "empty message"
+		})
 		.reverse().join("\n")
 
 	return (

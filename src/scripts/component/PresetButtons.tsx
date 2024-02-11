@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import useMidiSocket, { useMidiRequester } from './../hooks/useMidiSocket'
 
 import PresetCategoryDefinitions from './../data/PresetCategoryDefinitions.json'

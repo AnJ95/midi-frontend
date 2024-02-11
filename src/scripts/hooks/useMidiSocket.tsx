@@ -35,13 +35,27 @@ export default function useMidiSocket(type) {
 	const { sendJsonMessage, lastJsonMessage, readyState } = useWebSocket(SOCKET_URL, socketOptions);
 
 	const sendMessage = (json) => {
-		json.type = json.type || channelType
+		json.type = json.type || type
 		sendJsonMessage(json)
 	}
 
 	const isOpen = readyState === ReadyState.OPEN;
 
 	return [ sendMessage, lastJsonMessage, isOpen, readyState ];
+}
+
+export function useMidiSender(type) {
+
+	let socketOptions = { ...SOCKET_OPTIONS }
+	socketOptions.filter = () => false;
+	const { sendJsonMessage } = useWebSocket(SOCKET_URL, socketOptions);
+
+	const sendMessage = (json) => {
+		json.type = json.type || type
+		sendJsonMessage(json)
+	}
+
+	return [ sendMessage ];
 }
 
 export function useMidiRequester(requestType, sendType, initialState, extractStateFromJson) {

@@ -95,7 +95,8 @@ Item type: [PresetButtonDefinition](https://github.com/AnJ95/midi-frontend/blob/
 ```json
 {
   "type": "setPreset",
-  "id": "party"
+  "category": "bar",
+  "id": "party-modus-1"
 }
 ```
 </td><td>
