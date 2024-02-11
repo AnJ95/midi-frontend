@@ -1,6 +1,25 @@
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+input, button, textarea {
+	padding: $sp-y-sm $sp-x-sm;
+	border: thin solid $col-sec;
+	border-radius: $border-radius-md;
+}
+
+textarea {
+	// https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp
+	// Hide Scrollbars But Keep Functionality
+
+	&::-webkit-scrollbar {
+		/* Chrome, Safari and Opera */
+		display: none;
+	}
+
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
 }
