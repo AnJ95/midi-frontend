@@ -4,10 +4,10 @@ import useMidiSocket, { useMidiRequester } from './../hooks/useMidiSocket'
 import PresetCategoryDefinitions from './../data/PresetCategoryDefinitions.json'
 import PresetButtonDefinitions from './../data/PresetButtonDefinitions.json'
 
-import PresetButton from './PresetButton'
+import PresetSelector from './PresetSelector'
 import { FlexRow, FlexCol } from './Flex'
 
-export default function PresetButtons(props) {
+export default function PresetManager(props) {
 
 	const [requestPresetCategoryDefinitions, sendDebugPresetCategoryDefinitions, presetCategoryDefinitions] = useMidiRequester(
 		"requestPresetCategoryDefinitions", // request type
@@ -32,14 +32,7 @@ export default function PresetButtons(props) {
 	return (
         <FlexCol stretch>
         	{presetCategoryDefinitions.map((presetCategoryDefinition, i) => (
-        		<FlexRow key={i} stretch>
-        			{presetButtonDefinitions
-        				.filter((presetButtonDefinition) => presetButtonDefinition.category === presetCategoryDefinition.id)
-        				.map((presetButtonDefinition, j) => (
-							<PresetButton key={j} model={presetButtonDefinition} />
-						))
-					}
-				</FlexRow>
+        		<PresetSelector key={i} model={presetCategoryDefinition} buttons={presetButtonDefinitions} />
         	))}
 		</FlexCol>
       );

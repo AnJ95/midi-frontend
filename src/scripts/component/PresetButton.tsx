@@ -6,10 +6,14 @@ import Button from './Button'
 export default function PresetButton(props) {
 
 	const [sendMessage] = useMidiSender("setPreset");
-	console.log("render Button")
+
+	const onClick = () => {
+		sendMessage({ category: props.model.category, id: props.model.id });
+		props.setCurrentPreset(props.model.id);
+	}
 
 	return (
-		<Button onClick={() => sendMessage({ category: props.model.category, id: props.model.id })}>
+		<Button pressed={props.currentPreset == props.model.id} onClick={onClick}>
 			{props.model.text}
 		</Button>
 	)
