@@ -6,7 +6,7 @@
 
 ```json
 {
-  "id": "bar",
+  "id": 0,
   "text": "Bar Presets"
 }
 ```
@@ -15,8 +15,8 @@
 
 ```json
 {
-  "id": "party-modus-1",
-  "category": "bar",
+  "row": 2,
+  "column": 7,
   "icon": "party",
   "color": "#ff00ff",
   "text": "Party 1"
@@ -27,7 +27,7 @@
 
 ```json
 {
-  "id": "strobo-1",
+  "column": 2,
   "icon": "strobo",
   "color": "#ff00ff",
   "text": "Strobo"
@@ -38,19 +38,10 @@
 
 ```json
 {
-  "id": "hexagons",
+  "column": 5,
   "icon": "hexagon",
   "color": "#ff00ff",
   "text": "Hexagons"
-}
-```
-
-### FaderState
-
-```json
-{
-  "id": "hexagons",
-  "state": 1.0
 }
 ```
 
@@ -79,7 +70,8 @@
 
 Item
 type: [PresetCategoryDefinition](https://github.com/AnJ95/midi-frontend/blob/main/COMMUNICATION.md#PresetCategoryDefinition)
-</td></tr><tr><td>
+</td></tr>
+<tr><td>
 
 ```json
 {
@@ -98,18 +90,19 @@ type: [PresetCategoryDefinition](https://github.com/AnJ95/midi-frontend/blob/mai
 
 Item
 type: [PresetButtonDefinition](https://github.com/AnJ95/midi-frontend/blob/main/COMMUNICATION.md#PresetButtonDefinition)
-</td></tr><tr><td>
+</td></tr>
+<tr><td>
 
 ```json
 {
   "type": "setPreset",
-  "category": "bar",
   "id": "party-modus-1"
 }
 ```
 
 </td><td>
-</td></tr></table>
+</td></tr>
+</table>
 
 ### HoldActions
 
@@ -175,12 +168,13 @@ type: [HoldActionDefinition](https://github.com/AnJ95/midi-frontend/blob/main/CO
 ```
 
 Item type: [FaderDefinition](https://github.com/AnJ95/midi-frontend/blob/main/COMMUNICATION.md#FaderDefinition)
-</td></tr><tr><td>
+</td></tr>
+<tr><td>
 
 ```json
 {
   "type": "requestFaderState",
-  "id": "hexagons"
+  "column": 0
 }
 ```
 
@@ -189,30 +183,31 @@ Item type: [FaderDefinition](https://github.com/AnJ95/midi-frontend/blob/main/CO
 ```json
 {
   "type": "sendFaderState",
-  "item": {}
+  "column": 4,
+  "value": 255,
 }
 ```
 
-Item type: [FaderState](https://github.com/AnJ95/midi-frontend/blob/main/COMMUNICATION.md#FaderState)
-</td></tr><tr><td>
+</td></tr>
+<tr><td>
 </td><td>
 
 ```json
 {
   "type": "startFaderHighlight",
-  "id": "hexagons"
+  "column": 7
 }
 ```
 
 ```json
 {
   "type": "stopFaderHighlight",
-  "id": "hexagons"
+  "column": 3
 }
 ```
 
-Oder lieber in FaderState packen?
-</td></tr></table>
+</td></tr>
+</table>
 
 ### Pagination
 
@@ -233,4 +228,5 @@ Oder lieber in FaderState packen?
 ```
 
 </td><td>
-</td></tr></table>
+</td></tr>
+</table>
