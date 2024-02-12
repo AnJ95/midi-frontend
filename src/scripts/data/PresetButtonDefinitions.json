@@ -1,93 +1,100 @@
 [
   {
-    "id": "bar-clean",
-    "category": "bar",
-    "icon": "sun",
-    "color": "#ff00ff",
-    "text": "Putzlicht"
-  },
-  {
-    "id": "bar-off",
-    "category": "bar",
-    "icon": "off",
-    "color": "#ff00ff",
-    "text": "Aus"
-  },
-  {
     "id": "bar-chill-1",
     "category": "bar",
     "icon": "chill",
-    "color": "#ff00ff",
+    "color": "#c06541",
     "text": "Chill 1"
   },
   {
     "id": "bar-chill-2",
     "category": "bar",
     "icon": "party",
-    "color": "#ff00ff",
+    "color": "#c06541",
     "text": "Chill 2"
   },
   {
     "id": "bar-party-1",
     "category": "bar",
     "icon": "party",
-    "color": "#ff00ff",
+    "color": "#41c0a6",
     "text": "Party 1"
   },
   {
     "id": "bar-party-2",
     "category": "bar",
     "icon": "party",
-    "color": "#ff00ff",
+    "color": "#41c0a6",
     "text": "Party 2"
   },
   {
     "id": "bar-rave-1",
     "category": "bar",
     "icon": "rave",
-    "color": "#ff00ff",
+    "color": "#a541d4",
     "text": "Rave 1"
   },
   {
     "id": "bar-rave-2",
     "category": "bar",
     "icon": "rave",
-    "color": "#ff00ff",
+    "color": "#a541d4",
     "text": "Rave 2"
+  },
+  {
+    "id": "bar-clean",
+    "category": "bar",
+    "icon": "sun",
+    "color": "#f6f397",
+    "text": "Putzlicht"
+  },
+  {
+    "id": "bar-off",
+    "category": "bar",
+    "icon": "off",
+    "color": "#2a2e41",
+    "text": "Aus"
+  },
+  {
+    "id": "thresen-chill",
+    "category": "theke",
+    "icon": "chill",
+    "color": "#c06541",
+    "text": "Chill"
+  },
+  {
+    "id": "thresen-party",
+    "category": "theke",
+    "icon": "party",
+    "color": "#41c0a6",
+    "text": "Party"
+  },
+  {
+    "id": "thresen-rave",
+    "category": "theke",
+    "icon": "rave",
+    "color": "#a541d4",
+    "text": "Rave"
+  },
+  {
+    "id": "thresen-rainbow",
+    "category": "theke",
+    "icon": "rainbow",
+    "color": "#a541d4",
+    "text": "Rainbow"
   },
   {
     "id": "thresen-clean",
     "category": "theke",
     "icon": "sun",
-    "color": "#ff00ff",
+    "color": "#f6f397",
     "text": "Putzlicht"
   },
   {
     "id": "thresen-off",
     "category": "theke",
     "icon": "off",
-    "color": "#ff00ff",
+    "color": "#2a2e41",
     "text": "Aus"
-  },
-  {
-    "id": "thresen-dark",
-    "category": "theke",
-    "icon": "rave",
-    "color": "#ff00ff",
-    "text": "Dunkel"
-  },
-  {
-    "id": "thresen-cozy",
-    "category": "theke",
-    "icon": "chill",
-    "color": "#ff00ff",
-    "text": "Gemütlich"
-  },
-  {
-    "id": "thresen-rainbow",
-    "category": "theke",
-    "icon": "rainbow",
-    "color": "#ff00ff",
-    "text": "Regenbogen"
   }
 ]

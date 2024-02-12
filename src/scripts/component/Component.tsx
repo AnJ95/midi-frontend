@@ -1,5 +1,7 @@
+import React from "react";
+
 export interface iProps {
     className?: string;
-    style?: {};
+    style?: React.CSSProperties;
     children?: any;
 }

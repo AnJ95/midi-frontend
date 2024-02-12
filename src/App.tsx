@@ -9,7 +9,9 @@ function App() {
     return (
         <>
             <FlexCol stretch gap="lg">
-                <SocketDebug/>
+                <div style={{display: "none"}}>
+                    <SocketDebug/>
+                </div>
                 <PresetManager/>
                 <FlexRow stretch>
                     <Box>

@@ -1,20 +1,19 @@
 
 .fader {
-	position: relative;
+  background-color: $col-pri;
+  @extend .flex;
+  @extend .flex--center;
+  text-shadow: 1px 1px 2px rgba(#000, 0.5);
 
-	& > * {
-		position: relative;
-		z-index: 2;
-	}
+  &__value {
+    position: absolute;
+    z-index: 1;
 
-	&__value {
-		position: absolute;
-		z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
 
-		left: 0;
-		bottom: 0;
-		width: 100%;
-
-		background-color: $col-body-ter;
-	}
+    background-color: rgba($col-body-pri, 0.6);
+    box-shadow: 0 4px 6px 0 rgba($col-white, 0.1);
+  }
 }

@@ -2,49 +2,49 @@
   {
     "id": "hexagons",
     "icon": "hexagon",
-    "color": "#ff00ff",
+    "color": "#0c6482",
     "text": "Hexagons"
   },
   {
     "id": "sunstripes",
     "icon": "sunstripe",
-    "color": "#ff00ff",
+    "color": "#508746",
     "text": "Sunstripes"
   },
   {
     "id": "bulb",
     "icon": "bulb",
-    "color": "#ff00ff",
+    "color": "#968d3f",
     "text": "Glühbirne"
   },
   {
     "id": "moving-heads",
     "icon": "moving-head",
-    "color": "#ff00ff",
+    "color": "#95724f",
     "text": "Moving Heads"
   },
   {
     "id": "hexagons-2",
     "icon": "hexagon",
-    "color": "#ff00ff",
+    "color": "#945a5f",
     "text": "Hexagons"
   },
   {
     "id": "sunstripes-2",
     "icon": "sunstripe",
-    "color": "#ff00ff",
+    "color": "#94497a",
     "text": "Sunstripes"
   },
   {
     "id": "bulb-2",
     "icon": "bulb",
-    "color": "#ff00ff",
+    "color": "#8d418e",
     "text": "Glühbirne"
   },
   {
     "id": "moving-heads-2",
     "icon": "moving-head",
-    "color": "#ff00ff",
+    "color": "#72429a",
     "text": "Moving Heads"
   }
 ]

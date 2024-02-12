@@ -12,21 +12,22 @@ $icon-map: [
 ];
 
 .i {
-	display: block;
-	aspect-ratio: 1 / 1;
+  display: block;
+  aspect-ratio: 1 / 1;
 
-	background-image: url($icon-path);
-	background-size: ($icon-map-height * 100%) ($icon-map-width * 100%);
+  background-image: url($icon-path);
+  background-size: ($icon-map-height * 100%) ($icon-map-width * 100%);
 
-	@for $y from 1 through $icon-map-height {
-		@for $x from 1 through $icon-map-width {
-			&--#{nth($icon-map, ($y - 1) * $icon-map-width + $x)} {
-				background-position: (math.div(100%,($icon-map-width - 1))*($x - 1)) (math.div(100%, ($icon-map-height - 1))*($y - 1));
-			}
-		}
-	}
+  @for $y from 1 through $icon-map-height {
+    @for $x from 1 through $icon-map-width {
+      &--#{nth($icon-map, ($y - 1) * $icon-map-width + $x)} {
+        background-position: (math.div(100%,($icon-map-width - 1))*($x - 1)) (math.div(100%, ($icon-map-height - 1))*($y - 1));
+      }
+    }
+  }
 }
 
-.button > .i {
-	height: 100%;
+.button > .i,
+.fader > .i {
+  height: 100%;
 }

@@ -1,7 +1,7 @@
 import Box, {iBoxProps} from './Box'
 
 export interface iButtonProps extends iBoxProps {
-    pressed?: boolean
+    pressed?: boolean,
 }
 
 export default function Button(props: iButtonProps) {
@@ -11,7 +11,7 @@ export default function Button(props: iButtonProps) {
         + (props.pressed ? (" button--pressed") : "");
 
     return (
-        <Box className={className} size={props.size} onClick={props.onClick}>
+        <Box className={className} size={props.size} onClick={props.onClick} style={props.style} color={props.color}>
             {props.children}
         </Box>
     )

@@ -1,9 +1,9 @@
-import Button from './Button'
 import {FaderDefinition, FaderState} from "../data/DomainModel.tsx";
 import {iButtonProps} from "./Button.tsx";
 import {useMidiRequester} from "../hooks/useMidiSocket.tsx";
 import {useEffect} from "react";
 import Icon from "./Icon.tsx";
+import Box from "./Box.tsx";
 
 interface iFaderButtonProps extends iButtonProps {
     pressed?: boolean
@@ -35,13 +35,12 @@ export default function FaderButton(props: iFaderButtonProps) {
         + (props.className ? (" " + props.className) : "");
 
     return (
-        <Button className={className} size={props.size} onClick={props.onClick}>
+        <Box className={className} size={props.size} color={props.model.color}>
             {faderState && <div className={"fader__value"} style={{height: (faderState.state * 100.0) + "%"}}/>}
-            {props.model.icon ? (
+            {props.model.icon &&
                 <Icon icon={props.model.icon} color={props.model.color}/>
-            ) : (
-                <p>props.model.text</p>
-            )}
-        </Button>
+            }
+            <p>{props.model.text}</p>
+        </Box>
     )
 }

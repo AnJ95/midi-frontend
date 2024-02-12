@@ -1,44 +1,45 @@
 
 .flex {
-	display: flex;
+  display: flex;
 
-	&--row {
-		flex-direction: row;
-		gap: $sp-x-md;
+  &--row {
+    flex-direction: row;
+    gap: $sp-x-md;
 
-		&.flex--gap--sm {
-			gap: $sp-x-sm;
-		}
+    &.flex--gap--sm {
+      gap: $sp-x-sm;
+    }
 
-		&.flex--gap--lg {
-			gap: $sp-x-lg;
-		}
-	}
+    &.flex--gap--lg {
+      gap: $sp-x-lg;
+    }
+  }
 
-	&--column {
-		flex-direction: column;
-		gap: $sp-y-md;
+  &--column {
+    flex-direction: column;
+    gap: $sp-y-md;
 
-		&.flex--gap--sm {
-			gap: $sp-y-sm;
-		}
+    &.flex--gap--sm {
+      gap: $sp-y-sm;
+    }
 
-		&.flex--gap--lg {
-			gap: $sp-y-lg;
-		}
-	}
+    &.flex--gap--lg {
+      gap: $sp-y-lg;
+    }
+  }
 
-	&--center {
-		align-items: center;
-		justify-content: center;
-	}
+  &--center {
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
 
-	&--stretch {
-		align-items: stretch;
+  &--stretch {
+    align-items: stretch;
 
-		> * {
-			flex-grow: 1;
-		}
-	}
+    > * {
+      flex-grow: 1;
+    }
+  }
 
 }

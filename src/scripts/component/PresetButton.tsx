@@ -7,7 +7,7 @@ import Icon from "./Icon.tsx";
 interface iPresetButtonProps {
     model: PresetButtonDefinition
     currentPreset: string
-    setCurrentPreset: React.Dispatch<React.SetStateAction<string>>,
+    setCurrentPreset: React.Dispatch<React.SetStateAction<string>>
 }
 
 export default function PresetButton(props: iPresetButtonProps) {
@@ -20,12 +20,13 @@ export default function PresetButton(props: iPresetButtonProps) {
     }
 
     return (
-        <Button pressed={props.currentPreset == props.model.id} onClick={onClick}>
-            {props.model.icon ? (
+        <Button pressed={props.currentPreset == props.model.id} onClick={onClick} color={props.model.color}>
+
+            {props.model.icon && (
                 <Icon icon={props.model.icon} color={props.model.color}/>
-            ) : (
-                props.model.text
             )}
+            <p>{props.model.text}</p>
+
         </Button>
     )
 }
