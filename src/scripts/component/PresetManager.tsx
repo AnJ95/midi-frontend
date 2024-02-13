@@ -5,7 +5,6 @@ import PresetCategoryDefinitions from './../data/PresetCategoryDefinitions.json'
 import PresetButtonDefinitions from './../data/PresetButtonDefinitions.json'
 
 import PresetSelector from './PresetSelector'
-import {FlexCol} from './Flex'
 
 interface iPresetManagerProps {
 
@@ -34,10 +33,10 @@ export default function PresetManager(_props: iPresetManagerProps) {
     }, []);
 
     return (
-        <FlexCol stretch>
+        <>
             {presetCategoryDefinitions.map((presetCategoryDefinition, i) => (
                 <PresetSelector key={i} model={presetCategoryDefinition} buttons={presetButtonDefinitions}/>
             ))}
-        </FlexCol>
+        </>
     );
 }

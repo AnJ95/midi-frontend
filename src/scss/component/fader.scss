@@ -1,9 +1,6 @@
 
 .fader {
   background-color: $col-pri;
-  @extend .flex;
-  @extend .flex--center;
-  text-shadow: 1px 1px 2px rgba(#000, 0.5);
 
   &__value {
     position: absolute;

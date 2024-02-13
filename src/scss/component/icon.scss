@@ -13,7 +13,11 @@ $icon-map: [
 
 .i {
   display: block;
-  aspect-ratio: 1 / 1;
+
+  aspect-ratio: 1/1;
+
+  min-height: 30px;
+  min-width: 30px;
 
   background-image: url($icon-path);
   background-size: ($icon-map-height * 100%) ($icon-map-width * 100%);
@@ -25,9 +29,4 @@ $icon-map: [
       }
     }
   }
-}
-
-.button > .i,
-.fader > .i {
-  height: 100%;
 }

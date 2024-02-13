@@ -8,7 +8,8 @@ interface iFlexProps extends iFlexElemProps {
 
 interface iFlexElemProps extends iProps {
     stretch?: boolean,
-    gap?: string
+    gap?: string,
+    center?: boolean
 }
 
 function Flex(props: iFlexProps) {
@@ -16,6 +17,7 @@ function Flex(props: iFlexProps) {
         + (props.className ? (" " + props.className) : "")
         + (props.direction ? (" flex--" + props.direction) : "")
         + (props.stretch ? (" flex--stretch") : "")
+        + (props.center ? (" flex--center") : "")
         + (props.gap ? (" flex--gap--" + props.gap) : "");
 
     return (

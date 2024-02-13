@@ -6,7 +6,6 @@ import Button from "./Button.tsx";
 
 import FaderDefinitions from './../data/FaderDefinitions.json'
 import {FaderDefinition} from "../data/DomainModel.tsx";
-import Icon from "./Icon.tsx";
 
 interface iFaderManagerProps {
 
@@ -31,15 +30,13 @@ export default function FaderManager(_props: iFaderManagerProps) {
 
     return (
         <FlexRow stretch>
-            <Button onClick={() => sendPageLeft({})}>
-                <Icon icon={"left"}/>
-            </Button>
-            {faderDefinitions.map((faderDefinition, i) => (
-                <FaderButton key={i} model={faderDefinition}/>
-            ))}
-            <Button onClick={() => sendPageRight({})}>
-                <Icon icon={"right"}/>
-            </Button>
+            {faderDefinitions.length > 0 && (<>
+                <Button onClick={() => sendPageLeft({})} icon={"left"}/>
+                {faderDefinitions.map((faderDefinition, i) => (
+                    <FaderButton key={i} model={faderDefinition}/>
+                ))}
+                <Button onClick={() => sendPageRight({})} icon={"right"}/>
+            </>)}
         </FlexRow>
     );
 }

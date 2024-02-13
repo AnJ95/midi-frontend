@@ -1,8 +1,8 @@
-import {Color, Icon} from "../data/DomainModel.tsx";
+import {Color, Icon as IconType} from "../data/DomainModel.tsx";
 import {iProps} from "./Component.tsx";
 
 export interface iIconProps extends iProps {
-    icon: Icon,
+    icon: IconType,
     color?: Color
 }
 

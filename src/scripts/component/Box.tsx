@@ -3,9 +3,9 @@ import {Color} from "../data/DomainModel.tsx";
 import React from "react";
 
 export interface iBoxProps extends iProps {
-    onClick?: () => void,
     size?: string,
-    color?: Color
+    color?: Color,
+    onClick?: () => void,
 }
 
 export default function Box(props: iBoxProps) {

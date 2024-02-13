@@ -16,7 +16,6 @@
   {
     "id": "bar-party-1",
     "category": "bar",
-    "icon": "party",
     "color": "#41c0a6",
     "text": "Party 1"
   },
@@ -45,7 +44,7 @@
     "id": "bar-clean",
     "category": "bar",
     "icon": "sun",
-    "color": "#f6f397",
+    "color": "#e2d195",
     "text": "Putzlicht"
   },
   {
@@ -87,14 +86,14 @@
     "id": "thresen-clean",
     "category": "theke",
     "icon": "sun",
-    "color": "#f6f397",
+    "color": "#e2d195",
     "text": "Putzlicht"
   },
   {
     "id": "thresen-off",
     "category": "theke",
     "icon": "off",
-    "color": "#2a2e41",
+    "color": "#38365a",
     "text": "Aus"
   }
 ]
