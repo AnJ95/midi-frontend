@@ -16,6 +16,7 @@
   {
     "id": "bar-party-1",
     "category": "bar",
+    "icon": "party",
     "color": "#41c0a6",
     "text": "Party 1"
   },
