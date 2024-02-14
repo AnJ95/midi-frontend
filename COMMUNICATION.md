@@ -139,17 +139,10 @@ type: [HoldActionDefinition](https://github.com/AnJ95/midi-frontend/blob/main/CO
 
 ```json
 {
-  "type": "startHoldAction",
+  "type": "sendHoldAction",
   "row": 2,
   "column": 0,
-}
-```
-
-```json
-{
-  "type": "stopHoldAction",
-  "row": 0,
-  "column": 7,
+  "value": true,
 }
 ```
 
@@ -206,17 +199,10 @@ Item type: [FaderDefinition](https://github.com/AnJ95/midi-frontend/blob/main/CO
 
 ```json
 {
-  "type": "startFaderHighlight",
-  "row": 0,
-  "column": 7,
-}
-```
-
-```json
-{
-  "type": "stopFaderHighlight",
+  "type": "sendFaderHighlight",
   "row": 0,
   "column": 3,
+  "value": true,
 }
 ```
 
