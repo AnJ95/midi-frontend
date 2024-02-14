@@ -6,8 +6,8 @@
 
 ```json
 {
-  "id": 0,
-  "text": "Bar Presets"
+  "row": 0,
+  "text": "Bar Presets",
 }
 ```
 
@@ -19,7 +19,7 @@
   "column": 7,
   "icon": "party",
   "color": "#ff00ff",
-  "text": "Party 1"
+  "text": "Party 1",
 }
 ```
 
@@ -27,10 +27,11 @@
 
 ```json
 {
+  "row": 1,
   "column": 2,
   "icon": "strobo",
   "color": "#ff00ff",
-  "text": "Strobo"
+  "text": "Strobo",
 }
 ```
 
@@ -38,10 +39,11 @@
 
 ```json
 {
+  "row": 0,
   "column": 5,
   "icon": "hexagon",
   "color": "#ff00ff",
-  "text": "Hexagons"
+  "text": "Hexagons",
 }
 ```
 
@@ -55,7 +57,7 @@
 
 ```json
 {
-  "type": "requestPresetCategoryDefinitions"
+  "type": "requestPresetCategoryDefinitions",
 }
 ```
 
@@ -64,18 +66,23 @@
 ```json
 {
   "type": "sendPresetCategoryDefinitions",
-  "items": []
+  "items": [],
 }
 ```
 
 Item
 type: [PresetCategoryDefinition](https://github.com/AnJ95/midi-frontend/blob/main/COMMUNICATION.md#PresetCategoryDefinition)
 </td></tr>
+</table>
+
+### PresetActions
+
+<table>
 <tr><td>
 
 ```json
 {
-  "type": "requestPresetButtonDefinitions"
+  "type": "requestPresetButtonDefinitions",
 }
 ```
 
@@ -84,7 +91,7 @@ type: [PresetCategoryDefinition](https://github.com/AnJ95/midi-frontend/blob/mai
 ```json
 {
   "type": "sendPresetButtonDefinitions",
-  "items": []
+  "items": [],
 }
 ```
 
@@ -96,7 +103,8 @@ type: [PresetButtonDefinition](https://github.com/AnJ95/midi-frontend/blob/main/
 ```json
 {
   "type": "setPreset",
-  "id": "party-modus-1"
+  "row": 2,
+  "column": 1,
 }
 ```
 
@@ -112,7 +120,7 @@ type: [PresetButtonDefinition](https://github.com/AnJ95/midi-frontend/blob/main/
 
 ```json
 {
-  "type": "requestHoldActionDefinitions"
+  "type": "requestHoldActionDefinitions",
 }
 ```
 
@@ -121,7 +129,7 @@ type: [PresetButtonDefinition](https://github.com/AnJ95/midi-frontend/blob/main/
 ```json
 {
   "type": "sendHoldActionDefinitions",
-  "items": []
+  "items": [],
 }
 ```
 
@@ -132,14 +140,16 @@ type: [HoldActionDefinition](https://github.com/AnJ95/midi-frontend/blob/main/CO
 ```json
 {
   "type": "startHoldAction",
-  "id": "strobo-1"
+  "row": 2,
+  "column": 0,
 }
 ```
 
 ```json
 {
   "type": "stopHoldAction",
-  "id": "strobo-1"
+  "row": 0,
+  "column": 7,
 }
 ```
 
@@ -154,7 +164,7 @@ type: [HoldActionDefinition](https://github.com/AnJ95/midi-frontend/blob/main/CO
 
 ```json
 {
-  "type": "requestFaderDefinitions"
+  "type": "requestFaderDefinitions",
 }
 ```
 
@@ -163,7 +173,7 @@ type: [HoldActionDefinition](https://github.com/AnJ95/midi-frontend/blob/main/CO
 ```json
 {
   "type": "sendFaderDefinitions",
-  "items": []
+  "items": [],
 }
 ```
 
@@ -174,7 +184,8 @@ Item type: [FaderDefinition](https://github.com/AnJ95/midi-frontend/blob/main/CO
 ```json
 {
   "type": "requestFaderState",
-  "column": 0
+  "row": 2,
+  "column": 0,
 }
 ```
 
@@ -183,8 +194,9 @@ Item type: [FaderDefinition](https://github.com/AnJ95/midi-frontend/blob/main/CO
 ```json
 {
   "type": "sendFaderState",
+  "row": 0,
   "column": 4,
-  "value": 255,
+  "value": 0.141,
 }
 ```
 
@@ -195,14 +207,16 @@ Item type: [FaderDefinition](https://github.com/AnJ95/midi-frontend/blob/main/CO
 ```json
 {
   "type": "startFaderHighlight",
-  "column": 7
+  "row": 0,
+  "column": 7,
 }
 ```
 
 ```json
 {
   "type": "stopFaderHighlight",
-  "column": 3
+  "row": 0,
+  "column": 3,
 }
 ```
 
@@ -217,13 +231,13 @@ Item type: [FaderDefinition](https://github.com/AnJ95/midi-frontend/blob/main/CO
 
 ```json
 {
-  "type": "pageLeft"
+  "type": "pageLeft",
 }
 ```
 
 ```json
 {
-  "type": "pageRight"
+  "type": "pageRight",
 }
 ```
 
