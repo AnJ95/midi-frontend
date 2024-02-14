@@ -9,7 +9,7 @@ export interface iButtonProps extends iBoxProps {
 }
 
 export default function Button(props: iButtonProps) {
-    const iconEl = React.useRef<HTMLElement>(null);
+    const iconEl = React.useRef<HTMLDivElement>(null);
 
     const className = "button"
         + (props.className ? (" " + props.className) : "")
