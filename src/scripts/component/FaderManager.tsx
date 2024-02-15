@@ -13,7 +13,7 @@ interface iFaderManagerProps {
 
 export default function FaderManager(_props: iFaderManagerProps) {
 
-    const [requestFaderDefinitions, sendDebugFaderDefinitions, faderDefinitions] = useMidiRequester<FaderDefinition[]>(
+    const [requestFaderDefinitions, sendDebugFaderDefinitions, faderDefinitions] = useMidiRequester<FaderDefinition[][]>(
         "requestFaderDefinitions", // request type
         "sendFaderDefinitions", // type to expect data from
         [] // initial state
@@ -29,14 +29,17 @@ export default function FaderManager(_props: iFaderManagerProps) {
     }, []);
 
     return (
-        <FlexRow stretch>
-            {faderDefinitions.length > 0 && (<>
-                <Button onClick={() => sendPageLeft({})} icon={"left"}/>
-                {faderDefinitions.map((faderDefinition, i) => (
-                    <FaderButton key={i} model={faderDefinition}/>
-                ))}
-                <Button onClick={() => sendPageRight({})} icon={"right"}/>
-            </>)}
-        </FlexRow>
+        <>
+            {faderDefinitions.length > 0 && faderDefinitions.map((faderDefinitionRow, i) => (
+                <FlexRow stretch key={i}>
+                    <Button onClick={() => sendPageLeft({row: i})} icon={"left"}/>
+                    {faderDefinitionRow.map((faderDefinition, j) => (
+                        <FaderButton key={j} model={faderDefinition}/>
+                    ))}
+                    <Button onClick={() => sendPageRight({row: i})} icon={"right"}/>
+                </FlexRow>
+            ))}
+        </>
     );
+
 }

@@ -1,100 +1,104 @@
 [
-  {
-    "id": "bar-chill-1",
-    "category": "bar",
-    "icon": "chill",
-    "color": "#c06541",
-    "text": "Chill 1"
-  },
-  {
-    "id": "bar-chill-2",
-    "category": "bar",
-    "icon": "chill",
-    "color": "#c06541",
-    "text": "Chill 2"
-  },
-  {
-    "id": "bar-party-1",
-    "category": "bar",
-    "icon": "party",
-    "color": "#41c0a6",
-    "text": "Party 1"
-  },
-  {
-    "id": "bar-party-2",
-    "category": "bar",
-    "icon": "party",
-    "color": "#41c0a6",
-    "text": "Party 2"
-  },
-  {
-    "id": "bar-rave-1",
-    "category": "bar",
-    "icon": "rave",
-    "color": "#a541d4",
-    "text": "Rave 1"
-  },
-  {
-    "id": "bar-rave-2",
-    "category": "bar",
-    "icon": "rave",
-    "color": "#a541d4",
-    "text": "Rave 2"
-  },
-  {
-    "id": "bar-clean",
-    "category": "bar",
-    "icon": "sun",
-    "color": "#e2d195",
-    "text": "Putzlicht"
-  },
-  {
-    "id": "bar-off",
-    "category": "bar",
-    "icon": "off",
-    "color": "#2a2e41",
-    "text": "Aus"
-  },
-  {
-    "id": "thresen-chill",
-    "category": "theke",
-    "icon": "chill",
-    "color": "#c06541",
-    "text": "Chill"
-  },
-  {
-    "id": "thresen-party",
-    "category": "theke",
-    "icon": "party",
-    "color": "#41c0a6",
-    "text": "Party"
-  },
-  {
-    "id": "thresen-rave",
-    "category": "theke",
-    "icon": "rave",
-    "color": "#a541d4",
-    "text": "Rave"
-  },
-  {
-    "id": "thresen-rainbow",
-    "category": "theke",
-    "icon": "rainbow",
-    "color": "#a541d4",
-    "text": "Rainbow"
-  },
-  {
-    "id": "thresen-clean",
-    "category": "theke",
-    "icon": "sun",
-    "color": "#e2d195",
-    "text": "Putzlicht"
-  },
-  {
-    "id": "thresen-off",
-    "category": "theke",
-    "icon": "off",
-    "color": "#38365a",
-    "text": "Aus"
-  }
+  [
+    {
+      "row": 0,
+      "column": 0,
+      "icon": "chill",
+      "color": "#c06541",
+      "text": "Chill 1"
+    },
+    {
+      "row": 0,
+      "column": 1,
+      "icon": "chill",
+      "color": "#c06541",
+      "text": "Chill 2"
+    },
+    {
+      "row": 0,
+      "column": 2,
+      "icon": "party",
+      "color": "#41c0a6",
+      "text": "Party 1"
+    },
+    {
+      "row": 0,
+      "column": 3,
+      "icon": "party",
+      "color": "#41c0a6",
+      "text": "Party 2"
+    },
+    {
+      "row": 0,
+      "column": 4,
+      "icon": "rave",
+      "color": "#a541d4",
+      "text": "Rave 1"
+    },
+    {
+      "row": 0,
+      "column": 5,
+      "icon": "rave",
+      "color": "#a541d4",
+      "text": "Rave 2"
+    },
+    {
+      "row": 0,
+      "column": 6,
+      "icon": "sun",
+      "color": "#e2d195",
+      "text": "Putzlicht"
+    },
+    {
+      "row": 0,
+      "column": 7,
+      "icon": "off",
+      "color": "#2a2e41",
+      "text": "Aus"
+    }
+  ],
+  [
+    {
+      "row": 1,
+      "column": 0,
+      "icon": "chill",
+      "color": "#c06541",
+      "text": "Chill"
+    },
+    {
+      "row": 1,
+      "column": 1,
+      "icon": "party",
+      "color": "#41c0a6",
+      "text": "Party"
+    },
+    {
+      "row": 1,
+      "column": 2,
+      "icon": "rave",
+      "color": "#a541d4",
+      "text": "Rave"
+    },
+    {
+      "row": 1,
+      "column": 3,
+      "icon": "rainbow",
+      "color": "#a541d4",
+      "text": "Rainbow"
+    },
+    {
+      "row": 1,
+      "column": 4,
+      "icon": "sun",
+      "color": "#e2d195",
+      "text": "Putzlicht"
+    },
+    {
+      "row": 1,
+      "column": 5,
+      "icon": "off",
+      "color": "#38365a",
+      "text": "Aus"
+    }
+  ]
 ]

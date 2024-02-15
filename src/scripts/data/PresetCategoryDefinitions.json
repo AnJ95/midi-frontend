@@ -1,7 +1,10 @@
-[{
-  "id": "bar",
-  "text": "Bar Presets"
-},{
-  "id": "theke",
-  "text": "Theken Presets"
-}]
+[
+  {
+    "row": 0,
+    "text": "Bar Presets"
+  },
+  {
+    "row": 1,
+    "text": "Theken Presets"
+  }
+]

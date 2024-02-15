@@ -9,6 +9,7 @@ $button-z-pressed: 4px;
   text-align: center;
   text-shadow: 1px 1px 2px rgba(#000, 0.5);
   transform: translateZ(0);
+  user-select: none;
 
   background-color: $col-button;
 

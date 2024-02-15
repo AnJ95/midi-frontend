@@ -15,7 +15,7 @@ export default function FaderButton(props: iFaderButtonProps) {
         "sendFaderState", // type to expect data from
         null, // initial state
         (json) => json.item, // custom state getter
-        (json) => json.item.id === props.model.id // custom filter
+        (json) => json.item.column === props.model.column && json.item.row === props.model.row // custom filter
     );
 
     useEffect(() => {
@@ -23,7 +23,8 @@ export default function FaderButton(props: iFaderButtonProps) {
         // DEBUG
         sendDebugFaderState({
             item: {
-                id: props.model.id,
+                row: props.model.row,
+                column: props.model.column,
                 state: Math.random()
             },
         })

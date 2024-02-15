@@ -3,27 +3,35 @@ export type Icon = "sun" | "off" | "chill" | "party" | "rave" | "rainbow" | "lef
 export type Json = any;
 export type Color = string;
 
+export interface iRowCol {
+    row: number,
+    column: number
+}
+
 export interface PresetButtonDefinition {
-    id: string,
-    category: string,
+    row: number,
+    column: number,
     icon: Icon,
     color: Color,
     text: string
 }
 
 export interface PresetCategoryDefinition {
+    row: number,
     id: string,
     text: string
 }
 
 export interface FaderDefinition {
-    "id": string,
-    "icon": Icon,
-    "color": Color,
-    "text": string
+    row: number,
+    column: number,
+    icon: Icon,
+    color: Color,
+    text: string
 }
 
 export interface FaderState {
-    "id": string,
-    "state": number
+    row: number,
+    column: number,
+    state: number
 }
