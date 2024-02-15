@@ -1,6 +1,6 @@
 import {FaderDefinition, FaderState} from "../data/DomainModel.tsx";
 import Button, {iButtonProps} from "./Button.tsx";
-import {useMidiRequester} from "../hooks/useMidiSocket.tsx";
+import {useMidiRequester, useMidiSender} from "../hooks/useMidiSocket.tsx";
 import {useEffect} from "react";
 
 interface iFaderButtonProps extends iButtonProps {
@@ -9,24 +9,25 @@ interface iFaderButtonProps extends iButtonProps {
 }
 
 export default function FaderButton(props: iFaderButtonProps) {
+    const [setFaderState] = useMidiSender<FaderState>("setFaderState");
 
     const [requestFaderState, sendDebugFaderState, faderState] = useMidiRequester<FaderState | null>(
         "requestFaderState", // request type
         "sendFaderState", // type to expect data from
         null, // initial state
-        (json) => json.item, // custom state getter
-        (json) => json.item.column === props.model.column && json.item.row === props.model.row // custom filter
+        (json) => json, // custom state getter
+        (json) => {
+            return json.column === props.model.column && json.row === props.model.row
+        } // custom filter
     );
 
     useEffect(() => {
         requestFaderState()
         // DEBUG
         sendDebugFaderState({
-            item: {
-                row: props.model.row,
-                column: props.model.column,
-                state: Math.random()
-            },
+            row: props.model.row,
+            column: props.model.column,
+            state: Math.random()
         })
     }, []);
 
@@ -40,6 +41,17 @@ export default function FaderButton(props: iFaderButtonProps) {
             size={props.size}
             color={props.model.color}
             icon={props.model.icon}
+            onMouseDrag={({relYNorm}) => {
+                const state = {
+                    row: props.model.row,
+                    column: props.model.column,
+                    state: Math.max(0, Math.min(1, relYNorm))
+                }
+                setFaderState(state)
+                
+                // DEBUG
+                sendDebugFaderState(state)
+            }}
         >
             {faderState && <div className={"fader__value"} style={{height: (faderState.state * 100.0) + "%"}}/>}
             <p>{props.model.text}</p>

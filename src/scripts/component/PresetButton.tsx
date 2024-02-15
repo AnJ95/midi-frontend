@@ -1,6 +1,6 @@
 import {useMidiSender} from './../hooks/useMidiSocket'
 import Button from './Button'
-import {iRowCol, PresetButtonDefinition} from "../data/DomainModel.tsx";
+import {iRowCol, PresetButtonDefinition, PresetSetAction} from "../data/DomainModel.tsx";
 import {Dispatch, SetStateAction} from "react";
 
 interface iPresetButtonProps {
@@ -11,7 +11,7 @@ interface iPresetButtonProps {
 
 export default function PresetButton(props: iPresetButtonProps) {
 
-    const [sendMessage] = useMidiSender("setPreset");
+    const [sendMessage] = useMidiSender<PresetSetAction>("setPreset");
 
     const onClick = () => {
         let rowCol: iRowCol = {row: props.model.row, column: props.model.column};

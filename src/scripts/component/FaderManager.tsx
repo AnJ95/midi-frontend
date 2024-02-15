@@ -5,7 +5,7 @@ import FaderButton from "./FaderButton.tsx";
 import Button from "./Button.tsx";
 
 import FaderDefinitions from './../data/FaderDefinitions.json'
-import {FaderDefinition} from "../data/DomainModel.tsx";
+import {FaderDefinition, PageChangeAction} from "../data/DomainModel.tsx";
 
 interface iFaderManagerProps {
 
@@ -19,8 +19,8 @@ export default function FaderManager(_props: iFaderManagerProps) {
         [] // initial state
     );
 
-    const [sendPageLeft] = useMidiSender("pageLeft");
-    const [sendPageRight] = useMidiSender("pageRight");
+    const [sendPageLeft] = useMidiSender<PageChangeAction>("pageLeft");
+    const [sendPageRight] = useMidiSender<PageChangeAction>("pageRight");
 
     useEffect(() => {
         requestFaderDefinitions()
@@ -32,11 +32,11 @@ export default function FaderManager(_props: iFaderManagerProps) {
         <>
             {faderDefinitions.length > 0 && faderDefinitions.map((faderDefinitionRow, i) => (
                 <FlexRow stretch key={i}>
-                    <Button onClick={() => sendPageLeft({row: i})} icon={"left"}/>
+                    <Button onClick={() => sendPageLeft({row: i, direction: "left"})} icon={"left"}/>
                     {faderDefinitionRow.map((faderDefinition, j) => (
                         <FaderButton key={j} model={faderDefinition}/>
                     ))}
-                    <Button onClick={() => sendPageRight({row: i})} icon={"right"}/>
+                    <Button onClick={() => sendPageRight({row: i, direction: "right"})} icon={"right"}/>
                 </FlexRow>
             ))}
         </>

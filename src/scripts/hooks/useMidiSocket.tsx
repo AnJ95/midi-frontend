@@ -2,7 +2,7 @@ import useWebSocket, {Options, ReadyState} from 'react-use-websocket';
 import {useState} from 'react';
 
 import {SOCKET_URL} from './../data/Config';
-import {Json} from "../data/DomainModel.tsx";
+import {iTyped, Json} from "../data/DomainModel.tsx";
 
 const SOCKET_OPTIONS: Options = {
     // reconnect automatically
@@ -47,13 +47,13 @@ export default function useMidiSocket(type: string): [(data: Json) => void, Json
     return [sendMessage, lastJsonMessage, isOpen, readyState];
 }
 
-export function useMidiSender<T>(type: string): [(data: T) => void] {
+export function useMidiSender<T extends iTyped>(type: string): [(data: T) => void] {
 
     let socketOptions = {...SOCKET_OPTIONS}
     socketOptions.filter = () => false;
     const {sendJsonMessage} = useWebSocket(SOCKET_URL, socketOptions);
 
-    const sendMessage = (json: Json) => {
+    const sendMessage = (json: T) => {
         json.type = json.type || type
         sendJsonMessage(json)
     }

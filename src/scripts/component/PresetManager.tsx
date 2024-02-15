@@ -36,7 +36,7 @@ export default function PresetManager(_props: iPresetManagerProps) {
         sendDebugPresetCategoryDefinitions({items: PresetCategoryDefinitions})
         sendDebugPresetButtonDefinitions({items: PresetButtonDefinitions})
     }, []);
-    
+
     return (
         <>
             {presetButtonDefinitions.map((presetButtonDefinitionRow, i) => (
