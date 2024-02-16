@@ -4,10 +4,7 @@ import React, {forwardRef} from "react";
 
 export interface iBoxProps extends iProps {
     size?: string,
-    color?: Color,
-    onClick?: () => void,
-    onMouseDown?: () => void,
-    onMouseUp?: () => void
+    color?: Color
 }
 
 const Box = forwardRef<HTMLDivElement, iBoxProps>(function Box(props: iBoxProps, ref) {
@@ -22,8 +19,12 @@ const Box = forwardRef<HTMLDivElement, iBoxProps>(function Box(props: iBoxProps,
     }
 
     return (
-        <div className={className} style={style} onClick={props.onClick} onMouseDown={props.onMouseDown}
-             onMouseUp={props.onMouseUp} ref={ref}>
+        <div
+            {...props.innerProps}
+            className={className}
+            style={style}
+            ref={ref}
+        >
             {props.children}
         </div>
     )

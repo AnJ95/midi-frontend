@@ -1,16 +1,17 @@
 
 .fader {
-  background-color: $col-pri;
+	background-color: $col-pri;
+	touch-action: none;
 
-  &__value {
-    position: absolute;
-    z-index: 1;
+	&__value {
+		position: absolute;
+		z-index: 1;
 
-    left: 0;
-    top: 0;
-    width: 100%;
+		left: 0;
+		top: 0;
+		width: 100%;
 
-    background-color: rgba($col-body-pri, 0.6);
-    box-shadow: 0 4px 6px 0 rgba($col-white, 0.1);
-  }
+		background-color: rgba($col-body-pri, 0.6);
+		box-shadow: 0 4px 6px 0 rgba($col-white, 0.1);
+	}
 }

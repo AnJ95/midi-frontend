@@ -15,6 +15,9 @@ interface iOnMouseDrag {
 export interface iButtonProps extends iBoxProps {
     pressed?: boolean,
     icon?: IconType,
+    onClick?: () => void,
+    onMouseDown?: () => void,
+    onMouseUp?: () => void,
     onMouseDrag?: (event: iOnMouseDrag) => void
 }
 
@@ -27,10 +30,17 @@ export default function Button(props: iButtonProps) {
         + (props.className ? (" " + props.className) : "")
         + (props.pressed ? (" button--pressed") : "");
 
-    const mouseMoveListener = useCallback((event: MouseEvent) => {
+    const mouseMoveListener = useCallback((event: MouseEvent | TouchEvent) => {
         const bcr = ref.current?.getBoundingClientRect()
-        const absX = event.clientX;
-        const absY = event.clientY;
+        let absX = 0
+        let absY = 0
+        if (event instanceof MouseEvent) {
+            absX = event.clientX;
+            absY = event.clientY;
+        } else if (event instanceof TouchEvent) {
+            absX = event.touches[0].clientX;
+            absY = event.touches[0].clientY;
+        }
         const relX = absX - (bcr ? bcr.x : 0);
         const relY = absY - (bcr ? bcr.y : 0);
         const relXNorm = relX / (bcr ? bcr.width : 1);
@@ -49,27 +59,38 @@ export default function Button(props: iButtonProps) {
         props.onMouseDown?.()
         setIsMouseDown(true)
         addEventListener("mousemove", mouseMoveListener);
+        addEventListener("touchmove", mouseMoveListener);
+
         addEventListener("mouseup", onMouseUp, {once: true});
+        addEventListener("touchend", onMouseUp, {once: true});
     }
     const onMouseUp = () => {
         props.onMouseUp?.()
         setIsMouseDown(false)
         removeEventListener("mousemove", mouseMoveListener)
+        removeEventListener("touchmove", mouseMoveListener)
     }
 
     useEffect(() => {
         return () => {
             removeEventListener("mousemove", mouseMoveListener)
+            removeEventListener("touchmove", mouseMoveListener)
+
             removeEventListener("mouseup", onMouseUp);
+            removeEventListener("touchend", onMouseUp)
         }
     }, []);
 
     return (
         <Box className={className}
              size={props.size}
-             onClick={props.onClick}
-             onMouseDown={onMouseDown}
-             onMouseUp={onMouseUp}
+             innerProps={{
+                 onClick: props.onClick,
+                 onMouseDown: onMouseDown,
+                 onMouseUp: onMouseUp,
+                 onTouchStart: onMouseDown,
+                 onTouchEnd: onMouseUp
+             }}
              style={props.style}
              color={props.color}
              ref={ref}>
