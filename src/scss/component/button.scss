@@ -3,7 +3,10 @@ $button-z-hover: 15px;
 $button-z-pressed: 4px;
 
 .button {
-	cursor: pointer;
+	&:not(.button--no-hover) {
+		cursor: pointer;
+	}
+
 	@extend .flex;
 	@extend .flex--center;
 	text-align: center;
@@ -50,7 +53,7 @@ $button-z-pressed: 4px;
 
 	transition: all 0.21s ease-out;
 
-	&:hover {
+	&:not(&.button--no-hover):hover {
 		&:not(.button--same-height) {
 			margin-top: $button-z - $button-z-hover;
 			padding-bottom: calc($sp-y-sm + $button-z-hover);
@@ -68,7 +71,7 @@ $button-z-pressed: 4px;
 		}
 	}
 
-	&:active, &.button--pressed {
+	&:not(&.button--no-hover):active, &.button--pressed {
 
 		&:not(.button--same-height) {
 			margin-top: $button-z - $button-z-pressed;

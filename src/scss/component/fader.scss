@@ -2,6 +2,7 @@
 .fader {
 	background-color: $col-pri;
 	touch-action: none;
+	
 
 	&__value {
 		position: absolute;
@@ -11,7 +12,7 @@
 		top: 0;
 		width: 100%;
 
-		background-color: rgba($col-body-pri, 0.6);
-		box-shadow: 0 4px 6px 0 rgba($col-white, 0.1);
+		background-color: rgba($col-body-pri, 0.7);
+		box-shadow: 0 10px 26px 0 rgba($col-white, 0.05);
 	}
 }
