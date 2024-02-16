@@ -15,7 +15,6 @@ interface iOnMouseDrag {
 export interface iButtonProps extends iBoxProps {
     pressed?: boolean,
     staySameHeight?: boolean,
-    highlight?: boolean,
     icon?: IconType,
     onClick?: () => void,
     onMouseDown?: () => void,
@@ -32,7 +31,6 @@ export default function Button(props: iButtonProps) {
         + (props.className ? (" " + props.className) : "")
         + (props.pressed ? (" button--pressed") : "")
         + (props.staySameHeight ? (" button--same-height") : "");
-    //+ (props.highlight ? (" button--highlight") : "");
 
     const mouseMoveListener = useCallback((event: MouseEvent | TouchEvent) => {
         const bcr = ref.current?.getBoundingClientRect()

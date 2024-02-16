@@ -17,7 +17,7 @@ export default function FaderButton(props: iFaderButtonProps) {
         "sendFaderState", // type to expect data from
         null, // initial state
         (json) => json, // custom state getter
-        (json) => json.colqumn === props.model.column && json.row === props.model.row // custom filter
+        (json) => json.column === props.model.column && json.row === props.model.row // custom filter
     );
 
     const [, , faderHighlight] = useMidiRequester<FaderHighlight | null>(
@@ -44,7 +44,7 @@ export default function FaderButton(props: iFaderButtonProps) {
     return (
         <Button
             staySameHeight
-            highlight={isHolding || faderHighlight?.value}
+            pressed={isHolding || faderHighlight?.value}
             className={className}
             size={props.size}
             color={props.model.color}
