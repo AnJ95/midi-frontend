@@ -1,7 +1,7 @@
 import {FaderDefinition, FaderState} from "../data/DomainModel.tsx";
 import Button, {iButtonProps} from "./Button.tsx";
 import {useMidiRequester, useMidiSender} from "../hooks/useMidiSocket.tsx";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 
 interface iFaderButtonProps extends iButtonProps {
     pressed?: boolean
@@ -10,6 +10,7 @@ interface iFaderButtonProps extends iButtonProps {
 
 export default function FaderButton(props: iFaderButtonProps) {
     const [setFaderState] = useMidiSender<FaderState>("setFaderState");
+    const [isHolding, setIsHolding] = useState(false);
 
     const [requestFaderState, sendDebugFaderState, faderState] = useMidiRequester<FaderState | null>(
         "requestFaderState", // request type
@@ -36,11 +37,14 @@ export default function FaderButton(props: iFaderButtonProps) {
 
     return (
         <Button
-            pressed
+            staySameHeight
+            highlight={isHolding}
             className={className}
             size={props.size}
             color={props.model.color}
             icon={props.model.icon}
+            onMouseDown={() => setIsHolding(true)}
+            onMouseUp={() => setIsHolding(false)}
             onMouseDrag={({relYNorm}) => {
                 const state = {
                     row: props.model.row,
@@ -48,7 +52,7 @@ export default function FaderButton(props: iFaderButtonProps) {
                     state: Math.max(0, Math.min(1, relYNorm))
                 }
                 setFaderState(state)
-                
+
                 // DEBUG
                 sendDebugFaderState(state)
             }}
