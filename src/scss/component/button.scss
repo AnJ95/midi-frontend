@@ -1,93 +1,96 @@
-$button-z: 10px;
-$button-z-hover: 15px;
-$button-z-pressed: 4px;
+$button-z: 7px;
+$button-z-hover: 11px;
+$button-z-pressed: 3px;
 
 .button {
-	&:not(.button--no-hover) {
-		cursor: pointer;
-	}
+  &:not(.button--no-hover) {
+    cursor: pointer;
+  }
 
-	@extend .flex;
-	@extend .flex--center;
-	text-align: center;
-	text-shadow: 1px 1px 2px rgba(#000, 0.5);
-	transform: translateZ(0);
-	user-select: none;
+  @extend .flex;
+  @extend .flex--center;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(#000, 0.5);
+  transform: translateZ(0);
+  user-select: none;
 
-	background-color: $col-button;
+  background-color: $col-button;
 
-	margin-top: 0;
-	padding: $sp-y-sm $sp-x-sm calc($sp-y-sm + $button-z);
-	box-shadow: 0 0 0 1000px rgba($col-body-pri, 0.65) inset, // background darkener
-	0 (-$button-z) 0 0 rgba(#222, 0.3) inset; // front side of button
+  margin-top: 0;
+  padding: $sp-y-sm $sp-x-sm calc($sp-y-sm + $button-z);
+  box-shadow: 0 0 0 1000px rgba($col-body-pri, 0.65) inset, // background darkener
+  0 (-$button-z) 0 0 rgba(#222, 0.3) inset; // front side of button
 
-	&__i {
-		flex-grow: 1;
-		width: 100%;
-		@extend .flex;
-		@extend .flex--center;
+  &__i {
+    flex-grow: 1;
+    width: 100%;
+    @extend .flex;
+    @extend .flex--center;
 
-		.i {
-			height: 100%;
-			max-height: 6vw;
-			max-width: 6vw;
-		}
-	}
+    .i {
+      height: 100%;
+      max-height: 6vw;
+      max-width: 6vw;
+    }
+  }
 
 
-	&:before {
-		content: "";
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 100%;
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
 
-		z-index: 1;
-		border-radius: $border-radius-md;
+    z-index: 1;
+    border-radius: $border-radius-md;
 
-		transition: all 0.21s ease-out;
+    transition: all 0.21s ease-out;
 
-		bottom: $button-z;
-		box-shadow: 0 1px 0 0 rgba($col-white, 0.14);
-	}
+    bottom: $button-z;
+    box-shadow: 0 1px 0 0 rgba($col-white, 0.14);
+  }
 
-	transition: all 0.21s ease-out;
+  transition: all 0.21s ease-out;
 
-	&:not(&.button--no-hover):hover {
-		&:not(.button--same-height) {
-			margin-top: $button-z - $button-z-hover;
-			padding-bottom: calc($sp-y-sm + $button-z-hover);
-			box-shadow: 0 0 0 1000px rgba($col-body-pri, 0.50) inset, // background darkener
-			0 (-$button-z-hover) 0 0 rgba(#222, 0.3) inset; // front side of button
-			&:before {
-				bottom: $button-z-hover;
-			}
-		}
+  &:not(&.button--no-hover):hover {
+    &:not(.button--same-height) {
+      margin-top: $button-z - $button-z-hover;
+      padding-bottom: calc($sp-y-sm + $button-z-hover);
+      box-shadow: 0 0 0 1000px rgba($col-body-pri, 0.50) inset, // background darkener
+      0 (-$button-z-hover) 0 0 rgba(#222, 0.3) inset; // front side of button
+      &:before {
+        bottom: $button-z-hover;
+      }
+    }
 
-		box-shadow: 0 0 0 1000px rgba($col-body-pri, 0.50) inset, // background darkener
-		0 (-$button-z) 0 0 rgba(#222, 0.3) inset; // front side of button
-		&:before {
-			box-shadow: 0 1px 0 0 rgba($col-white, 0.19);
-		}
-	}
+    box-shadow: 0 0 0 1000px rgba($col-body-pri, 0.50) inset, // background darkener
+    0 (-$button-z) 0 0 rgba(#222, 0.3) inset; // front side of button
+    &:before {
+      box-shadow: 0 1px 0 0 rgba($col-white, 0.19);
+    }
+  }
 
-	&:not(&.button--no-hover):active, &.button--pressed {
+}
 
-		&:not(.button--same-height) {
-			margin-top: $button-z - $button-z-pressed;
-			padding-bottom: calc($sp-y-sm + $button-z-pressed);
+body #root .button {
+  &:not(.button--no-hover):active, &.button--pressed {
 
-			box-shadow: 0 0 0 1000px rgba($col-body-pri, 0.0) inset, // background darkener
-			0 (-$button-z-pressed) 0 0 rgba(#222, 0.3) inset; // front side of button
+    &:not(.button--same-height) {
+      margin-top: $button-z - $button-z-pressed;
+      padding-bottom: calc($sp-y-sm + $button-z-pressed);
 
-			&:before {
-				bottom: $button-z-pressed;
-				box-shadow: 0 1px 0 0 rgba($col-white, 0.0);
-			}
-		}
+      box-shadow: 0 0 0 1000px rgba($col-body-pri, 0.0) inset, // background darkener
+      0 (-$button-z-pressed) 0 0 rgba(#222, 0.3) inset; // front side of button
 
-		box-shadow: 0 0 0 1000px rgba($col-body-pri, 0.0) inset, // background darkener
-		0 (-$button-z) 0 0 rgba(#222, 0.3) inset; // front side of button
+      &:before {
+        bottom: $button-z-pressed;
+        box-shadow: 0 1px 0 0 rgba($col-white, 0.0);
+      }
+    }
 
-	}
+    box-shadow: 0 0 0 1000px rgba($col-body-pri, 0.0) inset, // background darkener
+    0 (-$button-z) 0 0 rgba(#222, 0.3) inset; // front side of button
+
+  }
 }

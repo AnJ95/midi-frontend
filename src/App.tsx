@@ -11,7 +11,6 @@ function App() {
                     <SocketDebug/>
                 </div>
                 <PresetManager/>
-                <div style={{height: "20vh"}}/>
                 <FaderManager/>
             </FlexCol>
         </>

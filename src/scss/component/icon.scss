@@ -16,8 +16,8 @@ $icon-map: [
 
   aspect-ratio: 1/1;
 
-  min-height: 30px;
-  min-width: 30px;
+  min-height: 10px;
+  min-width: 10px;
 
   background-image: url($icon-path);
   background-size: ($icon-map-height * 100%) ($icon-map-width * 100%);

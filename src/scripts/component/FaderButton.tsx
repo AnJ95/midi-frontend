@@ -44,7 +44,7 @@ export default function FaderButton(props: iFaderButtonProps) {
 
     return (<FlexCol stretch>
 
-        <Button pressed={isHolding} staySameHeight className="flex flex--gap--sm flex--column flex--stretch">
+        <Button pressed={isHolding} noHover className="flex flex--gap--sm flex--column flex--stretch">
             <Button
                 staySameHeight
                 pressed={isHolding || faderHighlight?.value}
