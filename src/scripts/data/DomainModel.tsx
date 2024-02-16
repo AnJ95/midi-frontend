@@ -3,6 +3,7 @@ export type Icon = "sun" | "off" | "chill" | "party" | "rave" | "rainbow" | "lef
 export type Json = any;
 export type Color = string;
 
+
 export interface iRow {
     row: number
 }
@@ -33,6 +34,10 @@ export interface FaderDefinition extends iRowCol {
 
 export interface FaderState extends iRowCol, iTyped {
     state: number
+}
+
+export interface FaderHighlight extends iRowCol, iTyped {
+    value: boolean
 }
 
 export interface PageChangeAction extends iRow, iTyped {

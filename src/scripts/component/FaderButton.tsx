@@ -1,4 +1,4 @@
-import {FaderDefinition, FaderState} from "../data/DomainModel.tsx";
+import {FaderDefinition, FaderHighlight, FaderState} from "../data/DomainModel.tsx";
 import Button, {iButtonProps} from "./Button.tsx";
 import {useMidiRequester, useMidiSender} from "../hooks/useMidiSocket.tsx";
 import {useEffect, useState} from "react";
@@ -17,9 +17,15 @@ export default function FaderButton(props: iFaderButtonProps) {
         "sendFaderState", // type to expect data from
         null, // initial state
         (json) => json, // custom state getter
-        (json) => {
-            return json.column === props.model.column && json.row === props.model.row
-        } // custom filter
+        (json) => json.colqumn === props.model.column && json.row === props.model.row // custom filter
+    );
+
+    const [, , faderHighlight] = useMidiRequester<FaderHighlight | null>(
+        "",
+        "sendFaderHighlight",
+        null,
+        (json) => json,
+        (json) => json.column === props.model.column && json.row === props.model.row
     );
 
     useEffect(() => {
@@ -38,7 +44,7 @@ export default function FaderButton(props: iFaderButtonProps) {
     return (
         <Button
             staySameHeight
-            highlight={isHolding}
+            highlight={isHolding || faderHighlight?.value}
             className={className}
             size={props.size}
             color={props.model.color}
