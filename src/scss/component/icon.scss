@@ -1,14 +1,17 @@
 @use "sass:math";
 
 $icon-path: "../../../midi-frontend/icons.svg";
-$icon-map-width: 5;
-$icon-map-height: 5;
+$icon-map-width: 8;
+$icon-map-height: 8;
 $icon-map: [
-	"", "off", "sun", "", "",
-	"chill", "party", "rave", "rainbow", "",
-	"hexagon", "sunstripe", "moving-head", "bulb", "",
-	"", "", "", "", "",
-	"left", "right", "", "", "",
+	"", "off", "sun", "moon", "rainbow", "fog", "lightning", "",
+	"chill", "party", "rave", "", "", "", "", "",
+	"hexagon", "sunstripe", "moving-head", "bulb", "bulbs", "led-bar", "led-bars", "spotlight",
+	"counter-front", "counter-back", "bottles", "", "", "", "", "",
+	"left", "right", "close", "", "", "", "", "",
+	 "", "", "", "", "", "", "", "",
+	 "", "", "", "", "", "", "", "",
+	 "", "", "", "", "", "", "", "",
 ];
 
 .i {
@@ -24,8 +27,11 @@ $icon-map: [
 
   @for $y from 1 through $icon-map-height {
     @for $x from 1 through $icon-map-width {
-      &--#{nth($icon-map, ($y - 1) * $icon-map-width + $x)} {
-        background-position: (math.div(100%,($icon-map-width - 1))*($x - 1)) (math.div(100%, ($icon-map-height - 1))*($y - 1));
+      $name: nth($icon-map, ($y - 1) * $icon-map-width + $x);
+      @if $name != "" {
+        &--#{$name} {
+          background-position: (math.div(100%,($icon-map-width - 1))*($x - 1)) (math.div(100%, ($icon-map-height - 1))*($y - 1));
+        }
       }
     }
   }

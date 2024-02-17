@@ -3,30 +3,30 @@
     {
       "row": 0,
       "column": 0,
-      "icon": "hexagon",
+      "icon": "counter-front",
       "color": "#0c6482",
-      "text": "Hexagons"
+      "text": "Tresen vorne"
     },
     {
       "row": 0,
       "column": 1,
-      "icon": "sunstripe",
+      "icon": "counter-back",
       "color": "#508746",
-      "text": "Sunstripes"
+      "text": "Tresen hinten"
     },
     {
       "row": 0,
       "column": 2,
-      "icon": "bulb",
+      "icon": "bottles",
       "color": "#968d3f",
-      "text": "Glühbirne"
+      "text": "Flaschenregal"
     },
     {
       "row": 0,
       "column": 3,
-      "icon": "moving-head",
+      "icon": "led-bars",
       "color": "#95724f",
-      "text": "Moving Heads"
+      "text": "LED-Bars"
     },
     {
       "row": 0,

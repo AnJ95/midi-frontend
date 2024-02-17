@@ -3,58 +3,30 @@
     {
       "row": 0,
       "column": 0,
-      "icon": "chill",
-      "color": "#c06541",
-      "text": "Chill 1"
+      "icon": "lightning",
+      "color": "#751118",
+      "text": "Strobo 1"
     },
     {
       "row": 0,
       "column": 1,
-      "icon": "chill",
-      "color": "#c06541",
-      "text": "Chill 2"
+      "icon": "lightning",
+      "color": "#751118",
+      "text": "Strobo 2"
     },
     {
       "row": 0,
       "column": 2,
-      "icon": "party",
-      "color": "#41c0a6",
-      "text": "Party 1"
+      "icon": "fog",
+      "color": "#9999a0",
+      "text": "Nebel"
     },
     {
       "row": 0,
       "column": 3,
-      "icon": "party",
-      "color": "#41c0a6",
-      "text": "Party 2"
-    },
-    {
-      "row": 0,
-      "column": 4,
-      "icon": "rave",
-      "color": "#a541d4",
-      "text": "Rave 1"
-    },
-    {
-      "row": 0,
-      "column": 5,
-      "icon": "rave",
-      "color": "#a541d4",
-      "text": "Rave 2"
-    },
-    {
-      "row": 0,
-      "column": 6,
-      "icon": "sun",
-      "color": "#e2d195",
-      "text": "Putzlicht"
-    },
-    {
-      "row": 0,
-      "column": 7,
-      "icon": "off",
+      "icon": "moon",
       "color": "#38365a",
-      "text": "Aus"
+      "text": "Dunkel"
     }
   ]
 ]

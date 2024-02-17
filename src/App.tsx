@@ -7,7 +7,7 @@ import HoldActionManager from "./scripts/component/HoldActionManager.tsx";
 function App() {
     return (
         <>
-            <FlexCol stretch>
+            <FlexCol stretch gap="lg">
                 <div style={{display: "none"}}>
                     <SocketDebug/>
                 </div>

@@ -78,7 +78,7 @@ $anim-time: 0.21s;
 		z-index: 5;
 		transition: opacity $anim-time ease-out, box-shadow $anim-time ease-out;
 		opacity: 0.0;
-		box-shadow: 0 0 30px 30px;
+		box-shadow: 0 0 100px 5px;
 	}
 
 	&.button--glow:after {
