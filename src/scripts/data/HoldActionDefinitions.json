@@ -56,49 +56,5 @@
       "color": "#38365a",
       "text": "Aus"
     }
-  ],
-  [
-    {
-      "row": 1,
-      "column": 0,
-      "icon": "chill",
-      "color": "#c06541",
-      "text": "Chill"
-    },
-    {
-      "row": 1,
-      "column": 1,
-      "icon": "party",
-      "color": "#41c0a6",
-      "text": "Party"
-    },
-    {
-      "row": 1,
-      "column": 2,
-      "icon": "rave",
-      "color": "#a541d4",
-      "text": "Rave"
-    },
-    {
-      "row": 1,
-      "column": 3,
-      "icon": "rainbow",
-      "color": "#a541d4",
-      "text": "Rainbow"
-    },
-    {
-      "row": 1,
-      "column": 4,
-      "icon": "sun",
-      "color": "#e2d195",
-      "text": "Putzlicht"
-    },
-    {
-      "row": 1,
-      "column": 5,
-      "icon": "off",
-      "color": "#38365a",
-      "text": "Aus"
-    }
   ]
 ]

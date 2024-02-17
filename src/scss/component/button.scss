@@ -2,95 +2,117 @@ $button-z: 7px;
 $button-z-hover: 11px;
 $button-z-pressed: 3px;
 
+$button-sp-x: $sp-x-md;
+$button-sp-y: $sp-y-md;
+
+
 .button {
-  &:not(.button--no-hover) {
-    cursor: pointer;
-  }
+	&:not(.button--no-hover) {
+		cursor: pointer;
+	}
 
-  @extend .flex;
-  @extend .flex--center;
-  text-align: center;
-  text-shadow: 1px 1px 2px rgba(#000, 0.5);
-  transform: translateZ(0);
-  user-select: none;
+	overflow: hidden;
 
-  background-color: $col-button;
+	.button__inner {
+		position: relative;
+		@extend .flex;
+		@extend .flex--center;
+		gap: $sp-y-sm;
 
-  margin-top: 0;
-  padding: $sp-y-sm $sp-x-sm calc($sp-y-sm + $button-z);
-  box-shadow: 0 0 0 1000px rgba($col-body-pri, 0.65) inset, // background darkener
-  0 (-$button-z) 0 0 rgba(#222, 0.3) inset; // front side of button
+		height: 100%;
 
-  &__i {
-    flex-grow: 1;
-    width: 100%;
-    @extend .flex;
-    @extend .flex--center;
+		& > * {
+			position: relative;
+			z-index: 2;
+		}
+	}
 
-    .i {
-      height: 100%;
-      max-height: 6vw;
-      max-width: 6vw;
-    }
-  }
+	text-align: center;
+	text-shadow: 1px 1px 2px rgba(#000, 0.5);
+	transform: translateZ(0);
+	user-select: none;
 
+	background-color: $col-button;
 
-  &:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
+	margin-top: 0;
+	padding: $button-sp-y $button-sp-x calc($button-sp-y + $button-z);
+	box-shadow: 0 0 0 1000px rgba($col-body-pri, 0.65) inset, // background darkener
+	0 (-$button-z) 0 0 rgba(#222, 0.3) inset; // front side of button
 
-    z-index: 1;
-    border-radius: $border-radius-md;
+	&__i {
+		flex-grow: 1;
+		width: 100%;
+		@extend .flex;
+		@extend .flex--center;
 
-    transition: all 0.21s ease-out;
+		.i {
+			height: 100%;
+			max-height: 6vw;
+			max-width: 6vw;
+		}
+	}
 
-    bottom: $button-z;
-    box-shadow: 0 1px 0 0 rgba($col-white, 0.14);
-  }
+	p {
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
 
-  transition: all 0.21s ease-out;
+	&:before {
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
 
-  &:not(&.button--no-hover):hover {
-    &:not(.button--same-height) {
-      margin-top: $button-z - $button-z-hover;
-      padding-bottom: calc($sp-y-sm + $button-z-hover);
-      box-shadow: 0 0 0 1000px rgba($col-body-pri, 0.50) inset, // background darkener
-      0 (-$button-z-hover) 0 0 rgba(#222, 0.3) inset; // front side of button
-      &:before {
-        bottom: $button-z-hover;
-      }
-    }
+		z-index: 1;
+		border-radius: $border-radius-md;
 
-    box-shadow: 0 0 0 1000px rgba($col-body-pri, 0.50) inset, // background darkener
-    0 (-$button-z) 0 0 rgba(#222, 0.3) inset; // front side of button
-    &:before {
-      box-shadow: 0 1px 0 0 rgba($col-white, 0.19);
-    }
-  }
+		transition: all 0.21s ease-out;
+
+		bottom: $button-z;
+		box-shadow: 0 1px 0 0 rgba($col-white, 0.14);
+	}
+
+	transition: all 0.21s ease-out;
+
+	&:not(&.button--no-hover):hover {
+		&:not(.button--same-height) {
+			margin-top: $button-z - $button-z-hover;
+			padding-bottom: calc($button-sp-y + $button-z-hover);
+			box-shadow: 0 0 0 1000px rgba($col-body-pri, 0.50) inset, // background darkener
+			0 (-$button-z-hover) 0 0 rgba(#222, 0.3) inset; // front side of button
+			&:before {
+				bottom: $button-z-hover;
+			}
+		}
+
+		box-shadow: 0 0 0 1000px rgba($col-body-pri, 0.50) inset, // background darkener
+		0 (-$button-z) 0 0 rgba(#222, 0.3) inset; // front side of button
+		&:before {
+			box-shadow: 0 1px 0 0 rgba($col-white, 0.19);
+		}
+	}
 
 }
 
 body #root .button {
-  &:not(.button--no-hover):active, &.button--pressed {
+	&:not(.button--no-hover):active, &.button--pressed {
 
-    &:not(.button--same-height) {
-      margin-top: $button-z - $button-z-pressed;
-      padding-bottom: calc($sp-y-sm + $button-z-pressed);
+		&:not(.button--same-height) {
+			margin-top: $button-z - $button-z-pressed;
+			padding-bottom: calc($button-sp-y + $button-z-pressed);
 
-      box-shadow: 0 0 0 1000px rgba($col-body-pri, 0.0) inset, // background darkener
-      0 (-$button-z-pressed) 0 0 rgba(#222, 0.3) inset; // front side of button
+			box-shadow: 0 0 0 1000px rgba($col-body-pri, 0.0) inset, // background darkener
+			0 (-$button-z-pressed) 0 0 rgba(#222, 0.3) inset; // front side of button
 
-      &:before {
-        bottom: $button-z-pressed;
-        box-shadow: 0 1px 0 0 rgba($col-white, 0.0);
-      }
-    }
+			&:before {
+				bottom: $button-z-pressed;
+				box-shadow: 0 1px 0 0 rgba($col-white, 0.0);
+			}
+		}
 
-    box-shadow: 0 0 0 1000px rgba($col-body-pri, 0.0) inset, // background darkener
-    0 (-$button-z) 0 0 rgba(#222, 0.3) inset; // front side of button
+		box-shadow: 0 0 0 1000px rgba($col-body-pri, 0.0) inset, // background darkener
+		0 (-$button-z) 0 0 rgba(#222, 0.3) inset; // front side of button
 
-  }
+	}
 }

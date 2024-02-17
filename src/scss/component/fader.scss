@@ -1,18 +1,31 @@
 
 .fader {
-	background-color: $col-pri;
-	touch-action: none;
-	
+  & > .button__inner {
+    @extend .flex;
+    @extend .flex--gap--sm;
+    @extend .flex--column;
+    @extend .flex--stretch;
+  }
 
-	&__value {
-		position: absolute;
-		z-index: 1;
+  &__inner {
+    background-color: $col-pri;
+    touch-action: none;
 
-		left: 0;
-		top: 0;
-		width: 100%;
+    .button__inner {
+      position: static;
+    }
+  }
 
-		background-color: rgba($col-body-pri, 0.7);
-		box-shadow: 0 10px 26px 0 rgba($col-white, 0.05);
-	}
+  .fader__value {
+    position: absolute;
+    z-index: 1;
+
+    left: 0;
+    top: 0;
+    width: 100%;
+
+    background-color: rgba($col-body-pri, 0.7);
+    box-shadow: 0 10px 26px 0 rgba($col-white, 0.05);
+  }
+
 }

@@ -22,6 +22,12 @@ export interface PresetButtonDefinition extends iRowCol {
     text: string
 }
 
+export interface HoldActionDefinition extends iRowCol {
+    icon: Icon,
+    color: Color,
+    text: string
+}
+
 export interface PresetCategoryDefinition extends iRow {
     text: string
 }
@@ -45,4 +51,8 @@ export interface PageChangeAction extends iRow, iTyped {
 }
 
 export interface PresetSetAction extends iRow, iTyped {
+}
+
+export interface HoldAction extends iRowCol, iTyped {
+    value: boolean
 }

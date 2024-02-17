@@ -31,19 +31,10 @@ export default function Button(props: iButtonProps) {
         + (props.className ? (" " + props.className) : "")
         + (props.pressed ? (" button--pressed") : "")
         + (props.noHover ? (" button--no-hover") : "")
-        + (props.staySameHeight ? (" button--same-height") : "");
+        + (props.staySameHeight ? (" button--same-height") : "")
 
-    const mouseMoveListener = useCallback((event: MouseEvent | TouchEvent) => {
+    const dispatchMouseDrag = useCallback((absX: number, absY: number) => {
         const bcr = ref.current?.getBoundingClientRect()
-        let absX = 0
-        let absY = 0
-        if (event instanceof MouseEvent) {
-            absX = event.clientX;
-            absY = event.clientY;
-        } else if (event instanceof TouchEvent) {
-            absX = event.touches[0].clientX;
-            absY = event.touches[0].clientY;
-        }
         const relX = absX - (bcr ? bcr.x : 0);
         const relY = absY - (bcr ? bcr.y : 0);
         const relXNorm = relX / (bcr ? bcr.width : 1);
@@ -58,12 +49,25 @@ export default function Button(props: iButtonProps) {
         })
     }, [props, ref]);
 
-    const onMouseDown = () => {
+    const mouseMoveListener = useCallback((event: MouseEvent | TouchEvent) => {
+        if (event instanceof MouseEvent) {
+            dispatchMouseDrag(event.clientX, event.clientY)
+        } else if (event instanceof TouchEvent) {
+            dispatchMouseDrag(event.touches[0].clientX, event.touches[0].clientY)
+        }
+    }, [dispatchMouseDrag]);
+
+    const onMouseDown = (event: any) => {
         props.onMouseDown?.()
         setIsMouseDown(true)
         addEventListener("mousemove", mouseMoveListener);
         addEventListener("touchmove", mouseMoveListener);
-
+        if (event.clientX) {
+            dispatchMouseDrag(event.clientX, event.clientY)
+        }
+        if (event.touches) {
+            dispatchMouseDrag(event.touches[0].clientX, event.touches[0].clientY)
+        }
         addEventListener("mouseup", onMouseUp, {once: true});
         addEventListener("touchend", onMouseUp, {once: true});
     }
@@ -97,12 +101,14 @@ export default function Button(props: iButtonProps) {
              style={props.style}
              color={props.color}
              ref={ref}>
-            {props.icon &&
-                <div className="button__i">
-                    <Icon icon={props.icon}/>
-                </div>
-            }
-            {props.children}
+            <div className="button__inner">
+                {props.icon &&
+                    <div className="button__i">
+                        <Icon icon={props.icon}/>
+                    </div>
+                }
+                {props.children}
+            </div>
         </Box>
     )
 }

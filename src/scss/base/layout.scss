@@ -5,7 +5,7 @@
   font-size: calc(3px + 1.2vw);
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color: $col-text;
   background-color: $col-body-pri;
 
   font-synthesis: none;
@@ -21,4 +21,9 @@ html, body, #root, #root > * {
 body {
   padding: $sp-y-lg $sp-x-lg;
   overflow: hidden;
+}
+
+.preset-manager {
+  flex-grow: 2;
+
 }

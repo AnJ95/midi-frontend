@@ -44,11 +44,11 @@ export default function FaderButton(props: iFaderButtonProps) {
 
     return (<FlexCol stretch>
 
-        <Button pressed={isHolding} noHover className="flex flex--gap--sm flex--column flex--stretch">
+        <Button pressed={isHolding} noHover className={className}>
             <Button
                 staySameHeight
                 pressed={isHolding || faderHighlight?.value}
-                className={className}
+                className="fader__inner"
                 size={props.size}
                 color={props.model.color}
                 icon={props.model.icon}

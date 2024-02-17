@@ -25,6 +25,7 @@ export default function PresetButton(props: iPresetButtonProps) {
     return (
         <Button
             pressed={currentPreset.column === props.model.column}
+            glow={currentPreset.column === props.model.column}
             onClick={onClick}
             color={props.model.color}
             icon={props.model.icon}>

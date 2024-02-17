@@ -1,15 +1,8 @@
 
 .box {
-  overflow: hidden;
-  position: relative;
   background-color: $col-body-sec;
   border-radius: $border-radius-md;
   padding: $sp-y-md $sp-x-md;
-
-  & > * {
-    position: relative;
-    z-index: 2;
-  }
 
   &--sm {
     width: $x-sm;

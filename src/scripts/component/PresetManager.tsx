@@ -7,6 +7,7 @@ import PresetButtonDefinitions from './../data/PresetButtonDefinitions.json'
 import PresetButton from "./PresetButton.tsx";
 import {FlexRow} from "./Flex.tsx";
 import {iRowCol, PresetButtonDefinition, PresetCategoryDefinition} from "../data/DomainModel.tsx";
+import Button from "./Button.tsx";
 
 interface iPresetManagerProps {
 
@@ -38,9 +39,9 @@ export default function PresetManager(_props: iPresetManagerProps) {
     }, []);
 
     return (
-        <>
+        <Button noHover className="preset-manager">
             {presetButtonDefinitions.map((presetButtonDefinitionRow, i) => (
-                <FlexRow stretch key={i}>
+                <FlexRow stretch style={{height: "100%", width: "100%"}} key={i}>
                     {presetButtonDefinitionRow.map((presetButtonDefinition, j) => (
                         <PresetButton key={j} model={presetButtonDefinition} currentPresets={currentPresets}
                                       setCurrentPresets={setCurrentPresets}/>
@@ -48,6 +49,6 @@ export default function PresetManager(_props: iPresetManagerProps) {
                     }
                 </FlexRow>
             ))}
-        </>
+        </Button>
     );
 }
