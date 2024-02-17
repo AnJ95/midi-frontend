@@ -1,4 +1,4 @@
-import {Icon as IconType} from "../data/DomainModel.tsx";
+import {Color, Icon as IconType} from "../data/DomainModel.tsx";
 import Box, {iBoxProps} from './Box'
 import {useCallback, useEffect, useRef, useState} from "react";
 import Icon from "./Icon.tsx";
@@ -16,6 +16,8 @@ export interface iButtonProps extends iBoxProps {
     pressed?: boolean,
     staySameHeight?: boolean,
     noHover?: boolean,
+    glow?: boolean,
+    glowColor?: Color,
     icon?: IconType,
     onClick?: () => void,
     onMouseDown?: () => void,
@@ -31,7 +33,11 @@ export default function Button(props: iButtonProps) {
         + (props.className ? (" " + props.className) : "")
         + (props.pressed ? (" button--pressed") : "")
         + (props.noHover ? (" button--no-hover") : "")
+        + (props.glow ? (" button--glow") : "")
         + (props.staySameHeight ? (" button--same-height") : "")
+
+    const style = props.style || {};
+    style.color = props.glowColor || props.color;
 
     const dispatchMouseDrag = useCallback((absX: number, absY: number) => {
         const bcr = ref.current?.getBoundingClientRect()
@@ -98,7 +104,7 @@ export default function Button(props: iButtonProps) {
                  onTouchStart: onMouseDown,
                  onTouchEnd: onMouseUp
              }}
-             style={props.style}
+             style={style}
              color={props.color}
              ref={ref}>
             <div className="button__inner">

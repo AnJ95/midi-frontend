@@ -1,29 +1,41 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  font-size: calc(3px + 1.2vw);
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
+	font-size: calc(3px + 1.2vw);
 
-  color-scheme: light dark;
-  color: $col-text;
-  background-color: $col-body-pri;
+	color-scheme: light dark;
+	color: $col-text;
+	background-color: $col-body-pri;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 html, body, #root, #root > * {
-  height: 100%;
+	height: 100%;
 }
 
 body {
-  padding: $sp-y-lg $sp-x-lg;
-  overflow: hidden;
+	padding: $sp-y-lg $sp-x-lg;
+	overflow: hidden;
 }
 
-.preset-manager {
-  flex-grow: 2;
+#root {
+	position: relative;
+	z-index: 0;
 
+	.preset-manager {
+		flex-grow: 2;
+	}
+
+	.hold-action-manager {
+		flex-grow: 1;
+	}
+
+	.fader-manager {
+		flex-grow: 3;
+	}
 }

@@ -31,7 +31,7 @@ export default function FaderManager(_props: iFaderManagerProps) {
     return (
         <>
             {faderDefinitions.length > 0 && faderDefinitions.map((faderDefinitionRow, i) => (
-                <FlexRow stretch key={i} style={{flexGrow: "3"}}>
+                <FlexRow stretch key={i} className="fader-manager">
                     <Button onClick={() => sendPageLeft({row: i, direction: "left"})} icon={"left"}/>
                     {faderDefinitionRow.map((faderDefinition, j) => (
                         <FaderButton key={j} model={faderDefinition}/>
