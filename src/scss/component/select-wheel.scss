@@ -11,6 +11,9 @@ $sw-padding: 20px;
 .select-wheel {
   position: relative;
 
+  @extend .flex;
+  @extend .flex--stretch;
+
   &__inner {
     position: absolute;
     z-index: 100;
@@ -18,7 +21,7 @@ $sw-padding: 20px;
     left: 50%;
     height: 0;
     width: 0;
-    //pointer-events: none;
+    pointer-events: none;
 
     transition: opacity 0.15s ease-in-out;
     opacity: 0;
@@ -79,8 +82,6 @@ $sw-padding: 20px;
       height: 0;
       border-color: #fff;
       border-style: solid;
-
-      opacity: 0.4;
     }
   }
 
@@ -112,6 +113,24 @@ $sw-padding: 20px;
         }
       }
     }
+  }
+
+  .select-wheel__option__background {
+    opacity: 0.1;
+  }
+
+  @for $option from 1 through $sw-max-options {
+    &--hovered--#{$option - 1} .select-wheel__option:nth-child(#{$option}) {
+      .select-wheel__option__background {
+        opacity: 0.5;
+      }
+    }
+    &--selected--#{$option - 1} .select-wheel__option:nth-child(#{$option}) {
+      .select-wheel__option__background {
+        opacity: 1.0;
+      }
+    }
+
   }
 
 }

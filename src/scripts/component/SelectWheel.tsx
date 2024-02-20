@@ -1,13 +1,13 @@
 import {iProps} from "./Component.tsx";
 import {Color, Icon as IconType} from "../data/DomainModel.tsx";
 import Button, {iOnMouseDrag} from "./Button.tsx";
-import {useCallback, useState} from "react";
+import {useCallback, useRef, useState} from "react";
 import Icon from "./Icon.tsx";
 
 interface iSelectWheelOption {
     text?: string,
     icon?: IconType,
-    color?: Color,
+    color?: Color
 }
 
 export interface iSelectWheelProps extends iProps {
@@ -16,40 +16,59 @@ export interface iSelectWheelProps extends iProps {
     color?: Color,
     useSelectedColor?: boolean,
     useSelectedIcon?: boolean,
-    onSelected?: (option: iSelectWheelOption) => void
+    onSelected?: (option: iSelectWheelOption) => void,
+    selectedOption?: number
 }
 
-export default function SelectWheel(props: iSelectWheelProps) {
-    // assert
-    for (let option of props.children) {
-        console.assert(option.type === SELECT_WHEEL_TYPE, option.type, option)
-    }
 
-    const [isOpen, setIsOpen] = useState(true);
+export default function SelectWheel(props: iSelectWheelProps) {
+    const [isOpen, setIsOpen] = useState(false);
+    const [selectedOption, setSelectedOption] = useState(props.selectedOption);
+    const [hoveredOption, setHoveredOption] = useState<number | undefined>();
+    const curHoveredOption = useRef<number | undefined>()
+
+    const sliceAngle = 2 * Math.PI / props.children.length;
 
     const className = "select-wheel"
         + (" select-wheel--" + props.children.length)
         + (props.className ? (" " + props.className) : "")
         + (isOpen ? (" select-wheel--open") : "")
+        + (selectedOption !== undefined ? (" select-wheel--selected--" + selectedOption) : "")
+        + (curHoveredOption.current !== undefined ? (" select-wheel--hovered--" + curHoveredOption.current) : "")
 
     const onMouseDown = useCallback(() => {
         setIsOpen(true)
     }, [setIsOpen]);
+
     const onMouseUp = useCallback(() => {
+        if (curHoveredOption.current !== undefined) {
+            setSelectedOption(curHoveredOption.current)
+            setHoveredOption(undefined)
+        }
         setIsOpen(false)
-    }, [setIsOpen]);
+    }, [curHoveredOption, setSelectedOption, setHoveredOption, setIsOpen]);
+
     const onMouseDrag = useCallback((event: iOnMouseDrag) => {
         const dirX = event.relX - 0.5 * event.width;
         const dirY = event.relY - 0.5 * event.height;
-        const angle = Math.atan2(dirY, dirX);
-        console.log(dirX, dirY, angle / (2 * 3.1415) * 360)
+        if (dirX * dirX + dirY * dirY < 900) {
+            curHoveredOption.current = undefined;
+            setHoveredOption(undefined)
+            return;
+        }
+        const angle = Math.atan2(dirX, -dirY);
+        const angleContinuous = angle < 0 ? (2 * Math.PI + angle) : angle;
+        const newHoveredOption = Math.round(angleContinuous / sliceAngle) % props.children.length;
 
-    }, []);
+        curHoveredOption.current = newHoveredOption;
+        setHoveredOption(newHoveredOption);
+    }, [hoveredOption, setHoveredOption]);
 
     return (
         <div
             {...props.innerProps}
             className={className}
+            style={props.style}
         >
             <Button
                 icon={props.icon}
@@ -72,7 +91,7 @@ export default function SelectWheel(props: iSelectWheelProps) {
 
 export function SelectWheelOption(props: iSelectWheelOption) {
     return (
-        <div className="select-wheel__option">
+        <div className={"select-wheel__option"}>
             <div className="select-wheel__option__background-container">
                 <div className="select-wheel__option__background"
                      style={{borderColor: `transparent ${(props.color || "transparent")} transparent transparent`}}/>
@@ -82,5 +101,3 @@ export function SelectWheelOption(props: iSelectWheelOption) {
         </div>
     )
 }
-
-const SELECT_WHEEL_TYPE = (<SelectWheelOption/>).type;

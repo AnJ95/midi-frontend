@@ -14,8 +14,10 @@ function App() {
                 </div>
                 <PresetManager/>
                 <HoldActionManager/>
-                <FlexRow center>
-                    <SelectWheel text="Farbe" onSelected={(o) => console.log(o)}>
+                <FlexRow stretch>
+                    <div></div>
+                    <SelectWheel text="Farbe" style={{width: "25vw"}}
+                                 onSelected={(o) => console.log(o)}>
                         <SelectWheelOption text="red" color="red" icon="rave"/>
                         <SelectWheelOption text="green" color="green" icon="rave"/>
                         <SelectWheelOption text="blue" color="blue" icon="rave"/>
@@ -23,6 +25,7 @@ function App() {
                         <SelectWheelOption text="purple" color="purple" icon="rave"/>
                         <SelectWheelOption text="pink" color="pink" icon="rave"/>
                     </SelectWheel>
+                    <div></div>
                 </FlexRow>
                 <FaderManager/>
             </FlexCol>
