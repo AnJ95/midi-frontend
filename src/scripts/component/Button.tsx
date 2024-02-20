@@ -3,9 +3,11 @@ import Box, {iBoxProps} from './Box'
 import {useCallback, useEffect, useRef, useState} from "react";
 import Icon from "./Icon.tsx";
 
-interface iOnMouseDrag {
+export interface iOnMouseDrag {
     absX: number,
     absY: number,
+    width: number,
+    height: number,
     relX: number,
     relY: number,
     relXNorm: number,
@@ -18,6 +20,7 @@ export interface iButtonProps extends iBoxProps {
     noHover?: boolean,
     glow?: boolean,
     glowColor?: Color,
+    round?: boolean,
     icon?: IconType,
     onClick?: () => void,
     onMouseDown?: () => void,
@@ -34,6 +37,7 @@ export default function Button(props: iButtonProps) {
         + (props.pressed ? (" button--pressed") : "")
         + (props.noHover ? (" button--no-hover") : "")
         + (props.glow ? (" button--glow") : "")
+        + (props.round ? (" button--round") : "")
         + (props.staySameHeight ? (" button--same-height") : "")
 
     const style = props.style || {};
@@ -48,6 +52,8 @@ export default function Button(props: iButtonProps) {
         props.onMouseDrag?.({
             absX: absX,
             absY: absY,
+            width: (bcr ? bcr.width : 0),
+            height: (bcr ? bcr.height : 0),
             relX: relX,
             relXNorm: relXNorm,
             relY: relY,

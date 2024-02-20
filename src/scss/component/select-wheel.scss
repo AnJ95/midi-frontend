@@ -1,0 +1,80 @@
+$sw-min-options: 2;
+$sw-max-options: 12;
+
+$sw-option-width: 180px;
+$sw-option-height: 80px;
+
+$sw-option-wheel-padding: 20px;
+
+.select-wheel {
+  position: relative;
+
+  &__inner {
+    position: absolute;
+    z-index: 100;
+    top: 50%;
+    left: 50%;
+    height: 0;
+    width: 0;
+    pointer-events: none;
+
+    transition: opacity 0.15s ease-in-out;
+    opacity: 0;
+  }
+
+  &__background {
+    display: block;
+    position: absolute;
+    z-index: -1;
+    height: 2 * ($sw-option-width + $sw-option-wheel-padding);
+    width: 2 * ($sw-option-width + $sw-option-wheel-padding);
+    top: -$sw-option-width - $sw-option-wheel-padding;
+    left: -$sw-option-width - $sw-option-wheel-padding;
+  }
+
+  &__option {
+    width: $sw-option-width;
+    height: $sw-option-height;
+
+    position: absolute;
+    top: -$sw-option-height * 0.5;
+
+    transform-origin: left center;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    gap: $sp-x-lg;
+
+    .i {
+      height: 100%;
+    }
+
+    p {
+      text-align: center;
+    }
+  }
+
+  &--open {
+    .select-wheel__inner {
+      opacity: 1;
+    }
+  }
+
+  @for $num-options from $sw-min-options through $sw-max-options {
+    &--#{$num-options} {
+      @for $option from 1 through $num-options {
+        $angle: ($option - 1) * (360deg / $num-options) - 90deg;
+        .select-wheel__option:nth-child(#{$option}) {
+          transform: rotate($angle);
+
+          i, p {
+            transform: rotate(-$angle);
+          }
+        }
+      }
+    }
+  }
+
+}
