@@ -15,7 +15,7 @@ const Box = forwardRef<HTMLDivElement, iBoxProps>(function Box(props: iBoxProps,
 
     const style: React.CSSProperties = props.style || {}
     if (props.color) {
-        style["backgroundColor"] = props.color
+        style["background"] = props.color
     }
 
     return (
