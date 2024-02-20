@@ -1,10 +1,12 @@
+@use 'sass:math';
+
 $sw-min-options: 2;
 $sw-max-options: 12;
 
-$sw-option-width: 180px;
-$sw-option-height: 80px;
+$sw-radius: 180px;
+$sw-option-height: 60px;
 
-$sw-option-wheel-padding: 20px;
+$sw-padding: 20px;
 
 .select-wheel {
   position: relative;
@@ -16,7 +18,7 @@ $sw-option-wheel-padding: 20px;
     left: 50%;
     height: 0;
     width: 0;
-    pointer-events: none;
+    //pointer-events: none;
 
     transition: opacity 0.15s ease-in-out;
     opacity: 0;
@@ -26,14 +28,14 @@ $sw-option-wheel-padding: 20px;
     display: block;
     position: absolute;
     z-index: -1;
-    height: 2 * ($sw-option-width + $sw-option-wheel-padding);
-    width: 2 * ($sw-option-width + $sw-option-wheel-padding);
-    top: -$sw-option-width - $sw-option-wheel-padding;
-    left: -$sw-option-width - $sw-option-wheel-padding;
+    height: 2 * ($sw-radius);
+    width: 2 * ($sw-radius);
+    top: -$sw-radius;
+    left: -$sw-radius;
   }
 
   &__option {
-    width: $sw-option-width;
+    width: $sw-radius - $sw-padding;
     height: $sw-option-height;
 
     position: absolute;
@@ -49,10 +51,36 @@ $sw-option-wheel-padding: 20px;
 
     .i {
       height: 100%;
+      transform-origin: center;
     }
 
     p {
       text-align: center;
+      transform-origin: center;
+    }
+
+    &__background-container {
+      position: absolute;
+      height: 2 * ($sw-radius);
+      width: 2 * ($sw-radius);
+      top: -$sw-radius + $sw-option-height * 0.5;
+      left: -$sw-radius;
+      border-radius: $sw-radius;
+      overflow: hidden;
+    }
+
+    &__background {
+      position: relative;
+      left: 50%;
+      top: 50%;
+
+      box-sizing: content-box;
+      width: 0;
+      height: 0;
+      border-color: #fff;
+      border-style: solid;
+
+      opacity: 0.4;
     }
   }
 
@@ -63,14 +91,23 @@ $sw-option-wheel-padding: 20px;
   }
 
   @for $num-options from $sw-min-options through $sw-max-options {
+    $slice-angle: math.div(360deg, $num-options);
+    $triangle-height: math.tan($slice-angle * 0.5) * $sw-radius;
+
     &--#{$num-options} {
       @for $option from 1 through $num-options {
-        $angle: ($option - 1) * (360deg / $num-options) - 90deg;
+        $position-angle: ($option - 1) * $slice-angle - 90deg;
+
         .select-wheel__option:nth-child(#{$option}) {
-          transform: rotate($angle);
+          transform: rotate($position-angle);
 
           i, p {
-            transform: rotate(-$angle);
+            transform: rotate(-$position-angle);
+          }
+
+          .select-wheel__option__background {
+            margin-top: -$triangle-height;
+            border-width: $triangle-height $sw-radius $triangle-height 0;
           }
         }
       }

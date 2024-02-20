@@ -73,6 +73,10 @@ export default function SelectWheel(props: iSelectWheelProps) {
 export function SelectWheelOption(props: iSelectWheelOption) {
     return (
         <div className="select-wheel__option">
+            <div className="select-wheel__option__background-container">
+                <div className="select-wheel__option__background"
+                     style={{borderColor: `transparent ${(props.color || "transparent")} transparent transparent`}}/>
+            </div>
             <p>{props.text}</p>
             {props.icon && <Icon icon={props.icon}/>}
         </div>

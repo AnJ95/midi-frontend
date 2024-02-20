@@ -18,6 +18,7 @@ function App() {
                     <SelectWheel text="Farbe" onSelected={(o) => console.log(o)}>
                         <SelectWheelOption text="red" color="red" icon="rave"/>
                         <SelectWheelOption text="green" color="green" icon="rave"/>
+                        <SelectWheelOption text="blue" color="blue" icon="rave"/>
                         <SelectWheelOption text="lime" color="lime" icon="rave"/>
                         <SelectWheelOption text="purple" color="purple" icon="rave"/>
                         <SelectWheelOption text="pink" color="pink" icon="rave"/>
