@@ -1,32 +1,30 @@
 [
-  [
-    {
-      "row": 0,
-      "column": 0,
-      "icon": "lightning",
-      "color": "#751118",
-      "text": "Strobo 1"
-    },
-    {
-      "row": 0,
-      "column": 1,
-      "icon": "lightning",
-      "color": "#751118",
-      "text": "Strobo 2"
-    },
-    {
-      "row": 0,
-      "column": 2,
-      "icon": "fog",
-      "color": "#9999a0",
-      "text": "Nebel"
-    },
-    {
-      "row": 0,
-      "column": 3,
-      "icon": "moon",
-      "color": "#38365a",
-      "text": "Dunkel"
-    }
-  ]
+  {
+    "row": 0,
+    "column": 0,
+    "icon": "lightning",
+    "color": "#751118",
+    "text": "Strobo 1"
+  },
+  {
+    "row": 0,
+    "column": 1,
+    "icon": "lightning",
+    "color": "#751118",
+    "text": "Strobo 2"
+  },
+  {
+    "row": 0,
+    "column": 2,
+    "icon": "fog",
+    "color": "#9999a0",
+    "text": "Nebel"
+  },
+  {
+    "row": 0,
+    "column": 3,
+    "icon": "moon",
+    "color": "#38365a",
+    "text": "Dunkel"
+  }
 ]

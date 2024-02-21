@@ -1,60 +1,58 @@
 [
-  [
-    {
-      "row": 0,
-      "column": 0,
-      "icon": "counter-front",
-      "color": "#0c6482",
-      "text": "Tresen vorne"
-    },
-    {
-      "row": 0,
-      "column": 1,
-      "icon": "counter-back",
-      "color": "#508746",
-      "text": "Tresen hinten"
-    },
-    {
-      "row": 0,
-      "column": 2,
-      "icon": "bottles",
-      "color": "#968d3f",
-      "text": "Flaschenregal"
-    },
-    {
-      "row": 0,
-      "column": 3,
-      "icon": "led-bars",
-      "color": "#95724f",
-      "text": "LED-Bars"
-    },
-    {
-      "row": 0,
-      "column": 4,
-      "icon": "hexagon",
-      "color": "#945a5f",
-      "text": "Hexagons"
-    },
-    {
-      "row": 0,
-      "column": 5,
-      "icon": "sunstripe",
-      "color": "#94497a",
-      "text": "Sunstripes"
-    },
-    {
-      "row": 0,
-      "column": 6,
-      "icon": "bulb",
-      "color": "#8d418e",
-      "text": "Glühbirne"
-    },
-    {
-      "row": 0,
-      "column": 7,
-      "icon": "moving-head",
-      "color": "#72429a",
-      "text": "Movingheads"
-    }
-  ]
+  {
+    "row": 0,
+    "column": 0,
+    "icon": "counter-front",
+    "color": "#0c6482",
+    "text": "Tresen vorne"
+  },
+  {
+    "row": 0,
+    "column": 1,
+    "icon": "counter-back",
+    "color": "#508746",
+    "text": "Tresen hinten"
+  },
+  {
+    "row": 0,
+    "column": 2,
+    "icon": "bottles",
+    "color": "#968d3f",
+    "text": "Flaschenregal"
+  },
+  {
+    "row": 0,
+    "column": 3,
+    "icon": "led-bars",
+    "color": "#95724f",
+    "text": "LED-Bars"
+  },
+  {
+    "row": 0,
+    "column": 4,
+    "icon": "hexagon",
+    "color": "#945a5f",
+    "text": "Hexagons"
+  },
+  {
+    "row": 0,
+    "column": 5,
+    "icon": "sunstripe",
+    "color": "#94497a",
+    "text": "Sunstripes"
+  },
+  {
+    "row": 0,
+    "column": 6,
+    "icon": "bulb",
+    "color": "#8d418e",
+    "text": "Glühbirne"
+  },
+  {
+    "row": 0,
+    "column": 7,
+    "icon": "moving-head",
+    "color": "#72429a",
+    "text": "Movingheads"
+  }
 ]

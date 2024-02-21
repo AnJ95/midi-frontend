@@ -8,6 +8,7 @@ import PresetButton from "./PresetButton.tsx";
 import {FlexRow} from "./Flex.tsx";
 import {iRowCol, PresetButtonDefinition, PresetCategoryDefinition} from "../data/DomainModel.tsx";
 import Button from "./Button.tsx";
+import {map1Dto2Darray} from "../utils.tsx";
 
 interface iPresetManagerProps {
 
@@ -23,7 +24,7 @@ export default function PresetManager(_props: iPresetManagerProps) {
         "sendPresetCategoryDefinitions", // type to expect data from
         [] // initial state
     );
-    const [requestPresetButtonDefinitions, sendDebugPresetButtonDefinitions, presetButtonDefinitions] = useMidiRequester<PresetButtonDefinition[][]>(
+    const [requestPresetButtonDefinitions, sendDebugPresetButtonDefinitions, presetButtonDefinitions] = useMidiRequester<PresetButtonDefinition[]>(
         "requestPresetButtonDefinitions", // request type
         "sendPresetButtonDefinitions", // type to expect data from
         [] // initial state
@@ -38,13 +39,18 @@ export default function PresetManager(_props: iPresetManagerProps) {
         sendDebugPresetButtonDefinitions({items: PresetButtonDefinitions})
     }, []);
 
+    const presetButtonDefinitions2D = map1Dto2Darray<PresetButtonDefinition>(presetButtonDefinitions)
+
     return (
         <Button noHover className="preset-manager">
-            {presetButtonDefinitions.map((presetButtonDefinitionRow, i) => (
+            {presetButtonDefinitions2D.map((presetButtonDefinitionRow, i) => (
                 <FlexRow stretch style={{height: "100%", width: "100%"}} key={i}>
                     {presetButtonDefinitionRow.map((presetButtonDefinition, j) => (
-                        <PresetButton key={j} model={presetButtonDefinition} currentPresets={currentPresets}
-                                      setCurrentPresets={setCurrentPresets}/>
+                        (presetButtonDefinition
+                                ? <PresetButton key={j} model={presetButtonDefinition} currentPresets={currentPresets}
+                                                setCurrentPresets={setCurrentPresets}/>
+                                : <div key={j}/>
+                        )
                     ))
                     }
                 </FlexRow>
