@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# https://github.com/motdotla/dotenv
+env/*.local
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
