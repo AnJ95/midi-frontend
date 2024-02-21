@@ -30,6 +30,7 @@ function getFilteredSocketOptions(typeFilter: string, extraFilter?: (json: Json)
                 const json = JSON.parse(message.data)
                 return json.type === typeFilter && (!extraFilter || extraFilter(json))
             } catch (e) {
+                console.error(e)
                 return false
             }
         }
