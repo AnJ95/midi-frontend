@@ -56,6 +56,7 @@ export function useMidiSender<T extends iTyped>(type: string): [(data: T) => voi
     const sendMessage = (json: T) => {
         json.type = json.type || type
         sendJsonMessage(json)
+        printDebugSend(json);
     }
 
     return [sendMessage];
@@ -76,15 +77,26 @@ export function useMidiRequester<T>(requestType: string, sendType: string, initi
         if (SEND_DEBUG) {
             data.type = sendType
             sendJsonMessage(data)
+            printDebugSend(data);
         }
     }
 
     if (lastJsonMessage) {
         const newState = extractStateFromJson ? extractStateFromJson(lastJsonMessage) : lastJsonMessage.items
         if (state !== newState) {
+            printDebugReceive(lastJsonMessage)
             setState(newState)
         }
     }
 
     return [startRequest, sendDebugData, state];
+}
+
+
+function printDebugSend(json: Json) {
+    console.log("SEND: ", json)
+}
+
+function printDebugReceive(json: Json) {
+    console.log("RECV: ", json)
 }
