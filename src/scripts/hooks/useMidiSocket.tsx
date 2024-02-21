@@ -55,8 +55,8 @@ export function useMidiSender<T extends iTyped>(type: string): [(data: T) => voi
 
     const sendMessage = (json: T) => {
         json.type = json.type || type
-        sendJsonMessage(json)
         printDebugSend(json);
+        sendJsonMessage(json)
     }
 
     return [sendMessage];
@@ -76,8 +76,8 @@ export function useMidiRequester<T>(requestType: string, sendType: string, initi
     const sendDebugData = (data: Json) => {
         if (SEND_DEBUG) {
             data.type = sendType
-            sendJsonMessage(data)
             printDebugSend(data);
+            sendJsonMessage(data)
         }
     }
 
