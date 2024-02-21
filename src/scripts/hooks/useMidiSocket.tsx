@@ -1,7 +1,7 @@
 import useWebSocket, {Options, ReadyState} from 'react-use-websocket';
 import {useState} from 'react';
 
-import {SEND_DEBUG, SOCKET_URL} from './../data/Config';
+import {SEND_DEBUG, SOCKET_URL, VERBOSE} from './../data/Config';
 import {iTyped, Json} from "../data/DomainModel.tsx";
 
 const SOCKET_OPTIONS: Options = {
@@ -9,6 +9,11 @@ const SOCKET_OPTIONS: Options = {
     shouldReconnect: () => {
         return true
     },
+    onOpen: VERBOSE ? (event) => console.log("onOpen", event) : undefined,
+    onClose: VERBOSE ? (event) => console.log("onClose", event) : undefined,
+    onMessage: VERBOSE ? (event) => console.log("onMessage", event) : undefined,
+    onError: VERBOSE ? (event) => console.log("onError", event) : undefined,
+
     reconnectAttempts: 20,
     reconnectInterval: 3000,
 
@@ -70,7 +75,9 @@ export function useMidiRequester<T>(requestType: string, sendType: string, initi
     const [state, setState] = useState(initialState)
 
     const startRequest = () => {
-        sendJsonMessage({type: requestType})
+        const data = {type: requestType};
+        printDebugSend(data);
+        sendJsonMessage(data);
     }
 
     const sendDebugData = (data: Json) => {
