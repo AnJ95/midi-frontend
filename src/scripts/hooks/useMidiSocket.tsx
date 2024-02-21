@@ -1,7 +1,7 @@
 import useWebSocket, {Options, ReadyState} from 'react-use-websocket';
 import {useState} from 'react';
 
-import {SOCKET_URL} from './../data/Config';
+import {SEND_DEBUG, SOCKET_URL} from './../data/Config';
 import {iTyped, Json} from "../data/DomainModel.tsx";
 
 const SOCKET_OPTIONS: Options = {
@@ -73,8 +73,10 @@ export function useMidiRequester<T>(requestType: string, sendType: string, initi
     }
 
     const sendDebugData = (data: Json) => {
-        data.type = sendType
-        sendJsonMessage(data)
+        if (SEND_DEBUG) {
+            data.type = sendType
+            sendJsonMessage(data)
+        }
     }
 
     if (lastJsonMessage) {
