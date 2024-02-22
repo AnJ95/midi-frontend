@@ -99,7 +99,7 @@ export default function Button(props: iButtonProps) {
         }
 
         addEventListener("mouseup", onMouseUp, {once: true});
-        event.preventDefault();
+
     }, [props.onMouseDown, setIsMouseDown, onMouseMove]);
 
     const onMouseUp = useCallback((event: any) => {
@@ -137,7 +137,6 @@ export default function Button(props: iButtonProps) {
              size={props.size}
              innerProps={{
                  onMouseDown: onMouseDown,
-                 onMouseUp: onMouseUp,
                  onTouchStart: onMouseDown,
                  onTouchMove: onMouseMove,
                  onTouchEnd: onMouseUp,
