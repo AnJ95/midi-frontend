@@ -28,10 +28,12 @@ export interface iButtonProps extends iBoxProps {
     onMouseDrag?: (event: iOnMouseDrag) => void
 }
 
+
 export default function Button(props: iButtonProps) {
     const ref = useRef<HTMLDivElement>(null);
-    const [, setIsMouseDown] = useState<boolean>(false)
+    const currentTouches = useRef<number[]>([]);
 
+    const [, setIsMouseDown] = useState<boolean>(false)
     const className = "button"
         + (props.className ? (" " + props.className) : "")
         + (props.pressed ? (" button--pressed") : "")
@@ -43,13 +45,13 @@ export default function Button(props: iButtonProps) {
     const style = props.style || {};
     style.color = props.glowColor || props.color;
 
-    const dispatchMouseDrag = useCallback((absX: number, absY: number) => {
+    const getMouseDrag = useCallback((absX: number, absY: number) => {
         const bcr = ref.current?.getBoundingClientRect()
         const relX = absX - (bcr ? bcr.x : 0);
         const relY = absY - (bcr ? bcr.y : 0);
         const relXNorm = relX / (bcr ? bcr.width : 1);
         const relYNorm = relY / (bcr ? bcr.height : 1);
-        props.onMouseDrag?.({
+        return {
             absX: absX,
             absY: absY,
             width: (bcr ? bcr.width : 0),
@@ -58,45 +60,75 @@ export default function Button(props: iButtonProps) {
             relXNorm: relXNorm,
             relY: relY,
             relYNorm: relYNorm
-        })
+        }
     }, [props, ref]);
 
-    const mouseMoveListener = useCallback((event: MouseEvent | TouchEvent) => {
-        if (event instanceof MouseEvent) {
+    const dispatchMouseDrag = useCallback((absX: number, absY: number) => {
+        props.onMouseDrag?.(getMouseDrag(absX, absY))
+    }, [getMouseDrag]);
+
+    const onMouseMove = useCallback((event: any) => {
+        if (event.type === "mousemove") {
             dispatchMouseDrag(event.clientX, event.clientY)
-        } else if (event instanceof TouchEvent) {
-            dispatchMouseDrag(event.touches[0].clientX, event.touches[0].clientY)
+        } else if (event.type === "touchmove") {
+            for (let i = 0; i < event.touches.length; i++) {
+                const touch = event.touches[i];
+                if (currentTouches.current.includes(touch.identifier)) {
+                    dispatchMouseDrag(touch.clientX, touch.clientY)
+                    // if (props.icon) console.log(props.icon, "move", touch.identifier, "/" + event.touches.length, currentTouches.current)
+                }
+            }
         }
+        event.preventDefault();
     }, [dispatchMouseDrag]);
 
-    const onMouseDown = (event: any) => {
+    const onMouseDown = useCallback((event: any) => {
         props.onMouseDown?.()
         setIsMouseDown(true)
-        addEventListener("mousemove", mouseMoveListener);
-        addEventListener("touchmove", mouseMoveListener);
-        if (event.clientX) {
+        addEventListener("mousemove", onMouseMove);
+
+        if (event.type === "mousedown") {
             dispatchMouseDrag(event.clientX, event.clientY)
+        } else if (event.type === "touchstart") {
+            for (let i = 0; i < event.changedTouches.length; i++) {
+                const touch = event.changedTouches[i];
+                dispatchMouseDrag(touch.clientX, touch.clientY)
+                currentTouches.current.push(touch.identifier);
+                // if (props.icon) console.log(props.icon, "down", touch.identifier, "/" + event.changedTouches.length, currentTouches.current)
+            }
         }
-        if (event.touches) {
-            dispatchMouseDrag(event.touches[0].clientX, event.touches[0].clientY)
-        }
+
         addEventListener("mouseup", onMouseUp, {once: true});
-        addEventListener("touchend", onMouseUp, {once: true});
-    }
-    const onMouseUp = () => {
+        event.preventDefault();
+    }, [props.onMouseDown, setIsMouseDown, onMouseMove]);
+
+    const onMouseUp = useCallback((event: any) => {
+        let mouseDrag: iOnMouseDrag | undefined;
+
+        if (event.type === "mouseup") {
+            mouseDrag = getMouseDrag(event.clientX, event.clientY);
+        } else if (event.type === "touchend") {
+            for (let i = 0; i < event.changedTouches.length; i++) {
+                const touch = event.changedTouches[i];
+                mouseDrag = getMouseDrag(touch.clientX, touch.clientY)
+                currentTouches.current.splice(currentTouches.current.indexOf(touch.identifier));
+                // if (props.icon) console.log(props.icon, "up", touch.identifier, "/" + event.changedTouches.length, currentTouches.current)
+            }
+        }
+
+        if (mouseDrag && mouseDragInside(mouseDrag)) {
+            props.onClick?.()
+        }
         props.onMouseUp?.()
         setIsMouseDown(false)
-        removeEventListener("mousemove", mouseMoveListener)
-        removeEventListener("touchmove", mouseMoveListener)
-    }
+        removeEventListener("mousemove", onMouseMove)
+    }, [props.onMouseUp])
 
     useEffect(() => {
         return () => {
-            removeEventListener("mousemove", mouseMoveListener)
-            removeEventListener("touchmove", mouseMoveListener)
+            removeEventListener("mousemove", onMouseMove)
 
             removeEventListener("mouseup", onMouseUp);
-            removeEventListener("touchend", onMouseUp)
         }
     }, []);
 
@@ -104,11 +136,11 @@ export default function Button(props: iButtonProps) {
         <Box className={className}
              size={props.size}
              innerProps={{
-                 onClick: props.onClick,
                  onMouseDown: onMouseDown,
                  onMouseUp: onMouseUp,
                  onTouchStart: onMouseDown,
-                 onTouchEnd: onMouseUp
+                 onTouchMove: onMouseMove,
+                 onTouchEnd: onMouseUp,
              }}
              style={style}
              color={props.color}
@@ -123,4 +155,8 @@ export default function Button(props: iButtonProps) {
             </div>
         </Box>
     )
+}
+
+function mouseDragInside(mouseDrag: iOnMouseDrag) {
+    return mouseDrag.relYNorm >= 0 && mouseDrag.relYNorm <= 1 && mouseDrag.relYNorm >= 0 && mouseDrag.relYNorm <= 1;
 }

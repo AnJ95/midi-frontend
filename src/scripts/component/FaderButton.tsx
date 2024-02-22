@@ -14,11 +14,11 @@ export default function FaderButton(props: iFaderButtonProps) {
     const [isHolding, setIsHolding] = useState(false);
 
     const [requestFaderState, sendDebugFaderState, faderState] = useMidiRequester<FaderState | null>(
-        "requestFaderState", // request type
-        "sendFaderState", // type to expect data from
-        null, // initial state
-        (json) => json, // custom state getter
-        (json) => json.column === props.model.column && json.row === props.model.row // custom filter
+        "requestFaderState",
+        "sendFaderState",
+        null,
+        (json) => json,
+        (json) => json.column === props.model.column && json.row === props.model.row
     );
 
     const [, , faderHighlight] = useMidiRequester<FaderHighlight | null>(
