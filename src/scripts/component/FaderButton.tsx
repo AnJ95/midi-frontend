@@ -10,7 +10,7 @@ interface iFaderButtonProps extends iButtonProps {
 }
 
 export default function FaderButton(props: iFaderButtonProps) {
-    const [setFaderState] = useMidiSender<FaderState>("setFaderState");
+    const [setFaderState] = useMidiSender<FaderState>("sendFaderState");
     const [isHolding, setIsHolding] = useState(false);
 
     const [requestFaderState, sendDebugFaderState, faderState] = useMidiRequester<FaderState | null>(
