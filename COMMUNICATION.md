@@ -6,8 +6,8 @@
 
 ```json
 {
-  "id": "bar",
-  "text": "Bar Presets"
+  "row": 0,
+  "text": "Bar Presets",
 }
 ```
 
@@ -15,11 +15,11 @@
 
 ```json
 {
-  "id": "party-modus-1",
-  "category": "bar",
+  "row": 2,
+  "column": 7,
   "icon": "party",
   "color": "#ff00ff",
-  "text": "Party 1"
+  "text": "Party 1",
 }
 ```
 
@@ -27,10 +27,11 @@
 
 ```json
 {
-  "id": "strobo-1",
+  "row": 1,
+  "column": 2,
   "icon": "strobo",
   "color": "#ff00ff",
-  "text": "Strobo"
+  "text": "Strobo",
 }
 ```
 
@@ -38,19 +39,11 @@
 
 ```json
 {
-  "id": "hexagons",
+  "row": 0,
+  "column": 5,
   "icon": "hexagon",
   "color": "#ff00ff",
-  "text": "Hexagons"
-}
-```
-
-### FaderState
-
-```json
-{
-  "id": "hexagons",
-  "state": 1.0
+  "text": "Hexagons",
 }
 ```
 
@@ -64,7 +57,7 @@
 
 ```json
 {
-  "type": "requestPresetCategoryDefinitions"
+  "type": "requestPresetCategoryDefinitions",
 }
 ```
 
@@ -73,17 +66,23 @@
 ```json
 {
   "type": "sendPresetCategoryDefinitions",
-  "items": []
+  "items": [],
 }
 ```
 
 Item
 type: [PresetCategoryDefinition](https://github.com/AnJ95/midi-frontend/blob/main/COMMUNICATION.md#PresetCategoryDefinition)
-</td></tr><tr><td>
+</td></tr>
+</table>
+
+### PresetActions
+
+<table>
+<tr><td>
 
 ```json
 {
-  "type": "requestPresetButtonDefinitions"
+  "type": "requestPresetButtonDefinitions",
 }
 ```
 
@@ -92,24 +91,26 @@ type: [PresetCategoryDefinition](https://github.com/AnJ95/midi-frontend/blob/mai
 ```json
 {
   "type": "sendPresetButtonDefinitions",
-  "items": []
+  "items": [],
 }
 ```
 
 Item
 type: [PresetButtonDefinition](https://github.com/AnJ95/midi-frontend/blob/main/COMMUNICATION.md#PresetButtonDefinition)
-</td></tr><tr><td>
+</td></tr>
+<tr><td>
 
 ```json
 {
   "type": "setPreset",
-  "category": "bar",
-  "id": "party-modus-1"
+  "row": 2,
+  "column": 1,
 }
 ```
 
 </td><td>
-</td></tr></table>
+</td></tr>
+</table>
 
 ### HoldActions
 
@@ -119,7 +120,7 @@ type: [PresetButtonDefinition](https://github.com/AnJ95/midi-frontend/blob/main/
 
 ```json
 {
-  "type": "requestHoldActionDefinitions"
+  "type": "requestHoldActionDefinitions",
 }
 ```
 
@@ -128,7 +129,7 @@ type: [PresetButtonDefinition](https://github.com/AnJ95/midi-frontend/blob/main/
 ```json
 {
   "type": "sendHoldActionDefinitions",
-  "items": []
+  "items": [],
 }
 ```
 
@@ -138,15 +139,10 @@ type: [HoldActionDefinition](https://github.com/AnJ95/midi-frontend/blob/main/CO
 
 ```json
 {
-  "type": "startHoldAction",
-  "id": "strobo-1"
-}
-```
-
-```json
-{
-  "type": "stopHoldAction",
-  "id": "strobo-1"
+  "type": "sendHoldAction",
+  "row": 2,
+  "column": 0,
+  "value": true,
 }
 ```
 
@@ -161,7 +157,7 @@ type: [HoldActionDefinition](https://github.com/AnJ95/midi-frontend/blob/main/CO
 
 ```json
 {
-  "type": "requestFaderDefinitions"
+  "type": "requestFaderDefinitions",
 }
 ```
 
@@ -170,17 +166,19 @@ type: [HoldActionDefinition](https://github.com/AnJ95/midi-frontend/blob/main/CO
 ```json
 {
   "type": "sendFaderDefinitions",
-  "items": []
+  "items": [],
 }
 ```
 
 Item type: [FaderDefinition](https://github.com/AnJ95/midi-frontend/blob/main/COMMUNICATION.md#FaderDefinition)
-</td></tr><tr><td>
+</td></tr>
+<tr><td>
 
 ```json
 {
   "type": "requestFaderState",
-  "id": "hexagons"
+  "row": 2,
+  "column": 0,
 }
 ```
 
@@ -189,30 +187,27 @@ Item type: [FaderDefinition](https://github.com/AnJ95/midi-frontend/blob/main/CO
 ```json
 {
   "type": "sendFaderState",
-  "item": {}
+  "row": 0,
+  "column": 4,
+  "value": 0.141,
 }
 ```
 
-Item type: [FaderState](https://github.com/AnJ95/midi-frontend/blob/main/COMMUNICATION.md#FaderState)
-</td></tr><tr><td>
+</td></tr>
+<tr><td>
 </td><td>
 
 ```json
 {
-  "type": "startFaderHighlight",
-  "id": "hexagons"
+  "type": "sendFaderHighlight",
+  "row": 0,
+  "column": 3,
+  "value": true,
 }
 ```
 
-```json
-{
-  "type": "stopFaderHighlight",
-  "id": "hexagons"
-}
-```
-
-Oder lieber in FaderState packen?
-</td></tr></table>
+</td></tr>
+</table>
 
 ### Pagination
 
@@ -222,15 +217,16 @@ Oder lieber in FaderState packen?
 
 ```json
 {
-  "type": "pageLeft"
+  "type": "pageLeft",
 }
 ```
 
 ```json
 {
-  "type": "pageRight"
+  "type": "pageRight",
 }
 ```
 
 </td><td>
-</td></tr></table>
+</td></tr>
+</table>
